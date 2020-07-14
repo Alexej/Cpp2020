@@ -20,7 +20,7 @@ namespace Cress::DataStructure
     void  
     BitVector::setNextBit(bool bit)
     {
-        int32_t cbi = bitVector.size(); // Current byte index;
+        int32_t cbi = bitVector.size();  
         int32_t spaceInCurrentByte = (cbi * INT8) - currentBitIndex;
         if(spaceInCurrentByte == 0)
         {

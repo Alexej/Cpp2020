@@ -2,13 +2,13 @@
 #define H_BITVECTOR
 
 #include "../BitGetters.hpp"
-#include "../Types.hpp"
+#include "../Macros.hpp"
 #include "BitField.hpp"
 #include <vector>
 
 namespace Cress::DataStructure
 {
-    using namespace Cress::Types;
+    using namespace Cress::Macros;
     using namespace Cress::BitGetters;
     class BitVector
     {

@@ -32,11 +32,6 @@ namespace Cress::Application
 
     void Core::work(void)
     {
-        const std::string helpFlag = "-h";
-        const std::string compressionFlag = "-c";
-        const std::string decompressionFlag = "-d";
-        const std::string entropyFlag = "-e";
-
         std::vector<std::string> arguments;
         for(int32_t i = 0; i < argc_; ++i)
             arguments.push_back(std::string(argv_[i]));
@@ -62,7 +57,7 @@ namespace Cress::Application
                 showInfo();
             else
             {
-                if(flag == helpFlag)
+                if(flag == HELP_FLAG)
                     showInfo();
                 else
                 {
@@ -71,19 +66,18 @@ namespace Cress::Application
                     else
                     {
                         std::string filename = (position == 1) ? std::string(arguments[2]) : std::string(arguments[1]);
-                        if(flag == decompressionFlag)
+                        if(flag == DECOMPRESSION_FLAG)
                         {
                             if(filename.substr(filename.length()-2, filename.length()) != COMPRESSED_FILE_EXTENSION)
                             {
                                 std::cout << "Please provide only .c files for decompression!" << std::endl;
                                 exit(EXIT_FAILURE);
-
                             }
                             HuffmanCompression h(filename, Mode::DECOMRESSION);   
                         }            
-                        else if(flag == compressionFlag)
+                        else if(flag == COMPRESSION_FLAG)
                             HuffmanCompression h(filename, Mode::COMPRESSION); 
-                        else if(flag == entropyFlag)
+                        else if(flag == ENTROPY_FLAG)
                             Shannon s(filename);
                     }
                 }

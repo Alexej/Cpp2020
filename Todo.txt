@@ -1,4 +1,5 @@
-2 add code comments
-3 code style & change naming
-4 add exceptions or at least make sure the program exits correctly    
-6 add Verbose Build, tells the user what the application currently does(creating Tree, Compressing, Exit, Start, Arguments given etc)
+1 add code comments
+2 code style & change naming
+3 add exceptions or at least make sure the program exits correctly    
+4 add Verbose Build, tells the user what the application currently does(creating Tree, Compressing, Exit, Start, Arguments given etc)
+5 rework old bit method for time optimization

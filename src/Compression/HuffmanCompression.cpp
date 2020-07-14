@@ -101,12 +101,13 @@ namespace Cress::Compression
     void 
     HuffmanCompression::decompress(int32_t gho, int32_t compressedDataLengthInBites) 
     {
+        std::vector<int8_t> tmp = std::vector<int8_t>(io.data()); // huge decompression time advantage
         std::vector<int8_t> decompressedCode;
         int32_t globalBitOffset = 0;
         std::shared_ptr<HuffmanBinaryTree> currentNode = rootNode;
         for(std::size_t i = gho; i < io.data().size(); ++i)
         {
-            int8_t currentCharacter = io.data()[i];
+            int8_t currentCharacter = tmp[i];
             for(int8_t bitCounter = INT8-1; (bitCounter >= 0) && 
             (globalBitOffset < compressedDataLengthInBites); --bitCounter)
             {

@@ -43,6 +43,6 @@ namespace Cress::Entropy
 
     void Shannon::showEntropy(void) const
     {
-        printf("The minimum average number of bits per symbol is: %f bits per byte\n", entropy);
+        printf("The minimum average number of bits per symbol is: %f\n", entropy);
     }
 }

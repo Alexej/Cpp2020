@@ -1,9 +1,8 @@
 CXX = g++
-CXXFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++20 -g -O0
+CXXFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++20 -g
 LDFLAGS = -fsanitize=address
 DEBUG = -DVERBOSE
 TESTS = -DTESTS
-BENCHMARK = -DBENCHMARK
 
 #https://blog.jgc.org/2011/07/gnu-make-recursive-wildcard-function.html
 rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
