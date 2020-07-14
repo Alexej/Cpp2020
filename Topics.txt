@@ -1,0 +1,30 @@
+
+Topics
+   (1) Toolchain: Komponenten
+   (2) Toolchain: getrennte Übersetzung*
+   (3) Toolchain: Fehler und Warnings*
+   (4) Daten: Darstellung*
+   (5) Daten: Datentypen*
+   (6) Daten: Umwandlung
+   (7) Daten: Bitmuster
+   (8) Daten: Bitoperationen
+   (9) Kontrollfluß: grundlegende Kontrollstrukturen*
+   (10) Kontrollfluß: fortgeschrittene Kontrollstrukturen
+   (11) benutzerdefinierte Datentypen: Abstraktionen*
+   (12) benutzerdefinierte Datentypen: operator overloading
+   (13) Object Orientation: Inheritance*
+   (14) Object Orientation: Interface vs. Implementation*
+   (15) Object Orientation: subtyping polymorhism / virtual methods*
+   (16) Object Orientation: Entity Types vs. Value Types
+   (17) Object Orientation: Object Lifecycle*
+   (18) frühe Bindung von Methoden und Funktionen
+   (19) späte Bindung von Methoden und Funktionen
+   (20) einfache Templates
+   (21) wichtige Container der C++-Standardbibliothek*
+   (22) wichtige Algorithmen der C++-Standardbibliothek
+   (23) Design Patterns*
+   (24) Idiome*
+   (25) Best Practices: 0 bis 33 // Es wurden die meisten Sachen eingehalten.
+   (26) häufige Fehlerquellen
+   (27) Objektkopien
+   (28) smart pointers
