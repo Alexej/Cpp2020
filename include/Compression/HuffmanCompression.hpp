@@ -33,6 +33,7 @@ namespace Cress::Compression
             void createTable(void);
             void startCompressing(void);
             void startDecompressing(void);
+            void copyData(void);
             HeaderInfo readHeader(void);
             HuffmanCompression(std::string filePath, Mode mode);
             void traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf);
@@ -43,7 +44,7 @@ namespace Cress::Compression
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
         private:
-            std::list<int8_t> byteList;
+            std::vector<char> data_;
             Queue queue;
             CharacterCodeTable cct;
             FileIO io;

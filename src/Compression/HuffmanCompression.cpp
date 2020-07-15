@@ -13,14 +13,25 @@ namespace Cress::Compression
             startDecompressing();
     }
 
-
     /*
         [TOPIC](22) wichtige Algorithmen der C++-Standardbibliothek
         [TOPIC](21) wichtige Container der C++-Standardbibliothek*
     */
+
+    void HuffmanCompression::
+    copyData(void)
+    {
+        for(std::size_t i = 0; i < io.size(); ++i)
+            data_.push_back(*((char*)io.data() + i));
+    }
+
+
     void 
     HuffmanCompression::fillQueue(void)
     {
+        std::list<int8_t> byteList;
+        for(auto byte : data_)
+            byteList.push_back(byte);
         while(byteList.size() > 0)
         {
             int8_t currentByte = byteList.front();
@@ -79,7 +90,7 @@ namespace Cress::Compression
     HuffmanCompression::compress(void)  
     {
         BitVector bv;
-        for(auto& ch : io.data())
+        for(auto ch : data_)
         {
             BitField code = cct.code(ch);
             bv.addBits(code);
@@ -90,8 +101,7 @@ namespace Cress::Compression
     void  
     HuffmanCompression::startCompressing(void)
     {
-        for(auto& byte : io.data())
-            byteList.push_back(byte);
+        copyData();
         fillQueue();
         createTree();
         createTable(); 
@@ -101,6 +111,7 @@ namespace Cress::Compression
     void 
     HuffmanCompression::startDecompressing(void)
     {
+        copyData();
         HeaderInfo gho = readHeader();
         createTree();
         createTable();
@@ -110,13 +121,12 @@ namespace Cress::Compression
     void 
     HuffmanCompression::decompress(int32_t gho, int32_t compressedDataLengthInBites) 
     {
-        std::vector<int8_t> tmp = std::vector<int8_t>(io.data()); // huge decompression time advantage
         std::vector<int8_t> decompressedCode;
         int32_t globalBitOffset = 0;
         std::shared_ptr<HuffmanBinaryTree> currentNode = rootNode;
-        for(std::size_t i = gho; i < io.data().size(); ++i)
+        for(std::size_t i = gho; i < data_.size(); ++i)
         {
-            int8_t currentCharacter = tmp[i];
+            int8_t currentCharacter = data_[i];
             for(int8_t bitCounter = INT8-1; (bitCounter >= 0) && 
             (globalBitOffset < compressedDataLengthInBites); --bitCounter)
             {
@@ -140,11 +150,11 @@ namespace Cress::Compression
     HuffmanCompression::readInteger(int32_t & offset)
     {
         std::string integerString = "";
-        for(std::size_t i = offset; i < io.data().size(); ++i)
+        for(std::size_t i = offset; i < data_.size(); ++i)
         {
-            if(io.data()[i] == ' ')
+            if(data_[i] == ' ')
                 break;
-            integerString += io.data()[i];
+            integerString += data_[i];
             ++offset;
         }
         return std::stoi(integerString);
@@ -154,10 +164,10 @@ namespace Cress::Compression
     HuffmanCompression::readInteger(int32_t & offset, int32_t & globalHeaderOffset)
     {
         std::string integerString = "";
-        int8_t nextChar = io.data()[offset];
+        int8_t nextChar = data_[offset];
         while(nextChar != ' ')
         {
-            nextChar = io.data()[offset];
+            nextChar = data_[offset];
             integerString += nextChar;
             ++globalHeaderOffset;
             ++offset;
@@ -180,7 +190,7 @@ namespace Cress::Compression
         int32_t internIndex = offset+1;
         for(int32_t headerOffset = 0; headerOffset < length; ++headerOffset)
         {
-            int8_t character = io.data()[internIndex];
+            int8_t character = data_[internIndex];
             int32_t j = internIndex+1;
             ++offset;
             int32_t frequency = readInteger(j, offset);

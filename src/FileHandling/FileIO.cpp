@@ -3,27 +3,44 @@
 
 namespace Cress::FileHandling
 {
-    FileIO::FileIO(std::string filePath) 
-    : filename_(filePath)
+    FileIO::FileIO(std::string fileName)
+    : filename_(fileName)
     {
-        std::ifstream inputStream(filePath, std::ios::binary | std::ios::in);
-        if(!inputStream.is_open())
-            std::cout << "Error opening file" << std::endl;
-            //throw
+        openFile();
+        getFileStats();
+        mapFile();
+    }
 
-        inputStream.seekg(0, std::ios_base::end);
-        std::streamsize size = inputStream.tellg();
-        inputStream.seekg(0, std::ios::beg);
+    void FileIO::openFile(void)
+    {
+        fileHandle_ = open(filename_.c_str(), O_RDONLY);
+        if (fileHandle_ == -1)
+            std::cout << "Error opening file" << std::endl; // throw
+    }
 
-        dataVec.resize(size);
-        inputStream.read((char*)dataVec.data(), size);
-        inputStream.close();
+    void FileIO::getFileStats(void)
+    {
+        if (fstat(fileHandle_, &stat_) == -1)
+            std::cout << "Error while obtaining Stats" << std::endl; // throw
+    }
+
+
+    void FileIO::mapFile(void)
+    {
+        address_ = mmap(NULL, stat_.st_size, PROT_READ, MAP_PRIVATE, fileHandle_, NULL);
+        if (address_ == MAP_FAILED)
+            std::cout << "Error mapping file into memory" << std::endl; // throw
     } 
 
-    std::vector<int8_t> 
-    FileIO::data(void) const
+    std::size_t FileIO::size(void) const
     {
-        return dataVec; 
+        return stat_.st_size;
+    }
+
+    void * 
+    FileIO::data(void) const 
+    {
+        return address_; 
     }
 
     std::string 
@@ -61,4 +78,4 @@ namespace Cress::FileHandling
         outputStream.write((char*)compressedCode.data(), compressedCode.size());
         outputStream.close();
     }
-}  
+}

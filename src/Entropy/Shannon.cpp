@@ -5,8 +5,8 @@ namespace Cress::Entropy
     Shannon::Shannon(std::string filePath)
     : io(filePath)
     {
-        for(auto& el : io.data())
-            data.push_back(el);
+        for(std::size_t i = 0; i < io.size(); ++i)
+            data.push_back(*((int8_t*)io.data() + i));
         calculateFrequency();
         calculateEntropy();
         showEntropy();
@@ -30,7 +30,7 @@ namespace Cress::Entropy
 
     void Shannon::calculateEntropy(void)
     {
-        int32_t size = io.data().size();
+        int32_t size = io.size();
         for(auto character : charFreqVec)
         {
             double p = (static_cast<double>(character.second) / static_cast<double>(size));
@@ -38,9 +38,9 @@ namespace Cress::Entropy
             [TOPIC](11) benutzerdefinierte Datentypen: Abstraktionen*
             */
 #ifdef VERBOSE
-            std::cout << "char: " << character.first << " Probability: " << p << " Frequency: "<< character.second << "/" << io.data().size() << std::endl;
+            std::cout << "char: " << character.first << " Probability: " << p << " Frequency: "<< character.second << "/" << io.size() << std::endl;
 #endif
-            entropy += abs((p * logB2(p))); 
+            entropy += -(p * logB2(p)); 
         }
     }
 

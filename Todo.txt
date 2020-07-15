@@ -1,6 +1,7 @@
+6 change fsteam with malloc or some shit to allocate memory on the heap
 1 add code comments
 2 code style & change naming
 3 add exceptions or at least make sure the program exits correctly    
+7 split FileIO into ReadData and WriteData
 4 add Verbose Build, tells the user what the application currently does(creating Tree, Compressing, Exit, Start, Arguments given etc)
-5 rework old bit method for time optimization
-6 change fsteam with malloc or some shit to allocate memory on the heap
+8 create header file structure
