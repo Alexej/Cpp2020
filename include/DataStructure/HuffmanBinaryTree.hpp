@@ -22,10 +22,6 @@ namespace Cress::DataStructure
             const std::shared_ptr<HuffmanBinaryTree> walkTree(int8_t rl) const;
         private:
             bool leaf_ = false;
-
-            /*
-            [TOPIC](28) smart pointers
-            */
             std::shared_ptr<HuffmanBinaryTree> leftNode_;
             std::shared_ptr<HuffmanBinaryTree> rightNode_;
             std::shared_ptr<CCFEntry> data_ = nullptr;

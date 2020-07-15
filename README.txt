@@ -93,6 +93,9 @@ Quellen:
    Shannon Entropy
    http://bearcave.com/misl/misl_tech/wavelets/compression/shannon.html
 
+   Mmap
+   https://man7.org/linux/man-pages/man2/mmap.2.html
+
    Misc
    https://stackoverflow.com/questions/51469927/huffman-compression-images
    https://stackoverflow.com/questions/45354875/using-huffman-coding-to-compress-images-taken-by-the-iphone-camera

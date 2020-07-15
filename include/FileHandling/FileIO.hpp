@@ -23,7 +23,6 @@ namespace Cress::FileHandling
             std::string filename(void) const;
             void * data(void) const;
             std::size_t size(void) const;
-
             
             void writeFile(const std::unordered_map<char, std::shared_ptr<CCFEntry>> & map, 
                            std::string filename, 
@@ -31,6 +30,7 @@ namespace Cress::FileHandling
                            
             void writeFile(std::string filename, 
                            std::vector<int8_t> compressedCode);
+
         private:
             std::string filename_;
             int32_t fileHandle_;

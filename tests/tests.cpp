@@ -75,9 +75,6 @@ TEST_CASE("Testing BitFields and BitVectors", "[bit manipulation]")
     letters.push_back("11001");      // d
 
 
-/*
-   [TOPIC](6) Daten: Umwandlung
-*/
     test.push_back((int8_t)192);
     test.push_back((int8_t)78);
     test.push_back((int8_t)152);
