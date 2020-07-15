@@ -16,7 +16,7 @@ namespace Cress::DataStructure
         public:
             BitField code(int8_t character);
             int32_t size() const;
-            bool character(BitField code, int8_t& ch);
+            bool character(BitField code, int8_t & ch);
             void addEnty(std::shared_ptr<CCFEntry> entry);
             const std::unordered_map<char, std::shared_ptr<CCFEntry>> & map(void) const;
         private:

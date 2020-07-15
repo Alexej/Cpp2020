@@ -34,6 +34,9 @@ namespace Cress::Entropy
         for(auto character : charFreqVec)
         {
             double p = (static_cast<double>(character.second) / static_cast<double>(size));
+            /*
+            [TOPIC](11) benutzerdefinierte Datentypen: Abstraktionen*
+            */
 #ifdef VERBOSE
             std::cout << "char: " << character.first << " Probability: " << p << " Frequency: "<< character.second << "/" << io.data().size() << std::endl;
 #endif
@@ -41,6 +44,9 @@ namespace Cress::Entropy
         }
     }
 
+    /*
+        [TOPIC](4) Daten: Darstellung*
+    */
     void Shannon::showEntropy(void) const
     {
         printf("The minimum average number of bits per symbol is: %f\n", entropy);

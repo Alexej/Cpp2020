@@ -18,6 +18,10 @@ namespace Cress::DataStructure
     void 
     Queue::sortByFrequency(void) 
     {        
+        /*
+           [TOPIC](10) Kontrollfluß: fortgeschrittene Kontrollstrukturen
+            Lambda
+        */
         std::sort(queue.begin(), queue.end(), [](const HuffmanBinaryTree & lhs, const HuffmanBinaryTree & rhs) {
             return lhs.data()->frequency() > rhs.data()->frequency();
         });

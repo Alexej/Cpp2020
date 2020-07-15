@@ -1,4 +1,6 @@
 CXX = g++
+
+# [TOPIC](3) Toolchain: Fehler und Warnings*
 CXXFLAGS = -Wall -Werror -Wextra -Wpedantic -std=c++20 -g
 LDFLAGS = -fsanitize=address
 DEBUG = -DVERBOSE

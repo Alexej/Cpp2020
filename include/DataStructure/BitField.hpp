@@ -8,12 +8,15 @@ namespace Cress::DataStructure
     class BitField
     {
         public:
-            BitField(){}
-            explicit BitField(int8_t bit);
+            BitField();
+            explicit BitField(bool bit);
             int32_t getField(void) const;
-            void append(int8_t bit);
             int8_t size(void) const;
+            BitField append(bool bit);
         public:
+        /*
+           [TOPIC](12) benutzerdefinierte Datentypen: operator overloading
+        */
             friend bool operator == (const BitField & rhs, 
                                      const BitField & lhs);
         private:

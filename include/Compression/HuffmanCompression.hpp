@@ -36,6 +36,10 @@ namespace Cress::Compression
             HeaderInfo readHeader(void);
             HuffmanCompression(std::string filePath, Mode mode);
             void traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf);
+
+            /*
+                [TOPIC](18) frühe Bindung von Methoden und Funktionen
+            */
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
         private:

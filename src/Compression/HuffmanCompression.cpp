@@ -13,6 +13,11 @@ namespace Cress::Compression
             startDecompressing();
     }
 
+
+    /*
+        [TOPIC](22) wichtige Algorithmen der C++-Standardbibliothek
+        [TOPIC](21) wichtige Container der C++-Standardbibliothek*
+    */
     void 
     HuffmanCompression::fillQueue(void)
     {
@@ -47,6 +52,9 @@ namespace Cress::Compression
         traverseTree(rootNode->rightNode(), BitField(1));
     }
 
+    /*
+    [TOPIC](9) Kontrollfluß: grundlegende Kontrollstrukturen*
+    */
     void 
     HuffmanCompression::traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf)
     {
@@ -57,12 +65,13 @@ namespace Cress::Compression
         }
         else
         {
+            /*
+            [TOPIC](27) Objektkopien
+            */
             BitField bfl(bf);
             BitField bfr(bf);
-            bfl.append(0);
-            bfr.append(1);
-            traverseTree(node->leftNode(), bfl);
-            traverseTree(node->rightNode(), bfr);
+            traverseTree(node->leftNode(), bfl.append(0));
+            traverseTree(node->rightNode(), bfr.append(1));
         }
     }
   
@@ -112,6 +121,10 @@ namespace Cress::Compression
             (globalBitOffset < compressedDataLengthInBites); --bitCounter)
             {
                 ++globalBitOffset;
+                /*
+                   [TOPIC](7) Daten: Bitmuster
+                   [TOPIC](8) Daten: Bitoperationen
+                */
                 currentNode = currentNode->walkTree(((currentCharacter >> bitCounter) & 1));
                 if(currentNode->leaf())
                 {
@@ -155,6 +168,9 @@ namespace Cress::Compression
     HeaderInfo 
     HuffmanCompression::readHeader(void)
     {
+        /*
+            [TOPIC](5) Daten: Datentypen*
+        */
         int32_t length;
         int32_t offset = 0;
         int32_t cdsib;
