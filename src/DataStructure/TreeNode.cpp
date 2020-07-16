@@ -39,7 +39,7 @@ namespace Cress::DataStructure
         return leaf_;
     }
 
-    const std::shared_ptr<TreeNode> 
+    const std::shared_ptr<TreeNode> &
     TreeNode::walkTree(int8_t rl) const
     {
         return rl == 0 ? leftNode_ : rightNode_;

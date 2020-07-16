@@ -39,15 +39,15 @@ Externe Abhängigkeiten:
 
 
 Beschreibung:
-   Bei diesem Projekt handelt es sich um meine Implementierung des Huffman Compressions-Algorithmus.
-   Es sollte dabei keine voll-funktionsfähige Anwendung erstellt werden, sondern lediglich nur die Grund Funktionalität wie in der
+   Bei diesem Projekt handelt es sich um meine Implementierung des Huffman Kompressionsalgorithmus.
+   Es sollte dabei keine voll-funktionsfähige Anwendung erstellt werden, sondern lediglich nur die Grundfunktionalität wie in der
    ersten Quelle beschrieben implementiert werden(eine Art POC). Bei vorliegender Interesse würde ich das Testen auf kleinere Text-Dateien begrenzen(kleiner als 15 MB).
    Ich habe diese Anwendung mit Quelltext-Dateien und Kompilierten C++ Anwendungen getestet. Dabei erhielt ich eine Größenreduktion
    im Bereich von ca. 40-70%. Dieser Algorithmus funktioniert nur bei Dateien mit niedriger Informations-Entropie, falls man versucht Bilder zu Kompressieren
    kommt es meistens zum Größenzuwachs, das hat wahrscheinlich damit zu tun, dass Bild-Formate wie .png und .jpg selber kompressionen vornehmen
-   und eine hohe Entropie besitzen, einen Größenzuwachs nach der Kompression stellte ich auch bei Dateiformaten wie .pdf fest. Da ich so ein Projekt zum ersten mal
-   mache und davor keine Ahnung von Kompressionsalgorithmen oder Koplexen Datenstrukturen hatte, konnte ich nicht die Effizienz erreichen die man von so einem Program
-   erwarten würde.
+   und eine hohe Entropie besitzen, einen Größenzuwachs nach der Kompression stellte ich auch bei Dateiformaten wie .pdf fest. Da ich so ein Projekt zum ersten Mal
+   mache und davor keine Ahnung von Kompressionsalgorithmen oder Koplexen Datenstrukturen hatte, konnte ich nicht die Effizienz erreichen, die man von so einem Programm
+   erwarten würde. Als Beispiele kann ich die shared_ptr nehmen die ich überall in meiner Baumklasse benutze die im vergleich zu raw pointers eine viel langsamer sind.
 
 
 Topics:
