@@ -1,6 +1,11 @@
 #ifndef H_FILEIO
 #define H_FILEIO
 
+#include "../Exceptions/FstatException.hpp"
+#include "../Exceptions/MmapException.hpp"
+#include "../Exceptions/OfstreamException.hpp"
+#include "../Exceptions/OpenException.hpp"
+
 #include "../DataStructure/CharacterCodeTable.hpp"
 #include "../DataStructure/BitVector.hpp"
 #include <vector>
@@ -12,6 +17,7 @@
 
 namespace Cress::FileHandling
 {
+    using namespace Cress::Exceptions;
     using namespace Cress::DataStructure;
     class FileIO
     {

@@ -69,14 +69,12 @@ namespace Cress::Application
                         if(flag == DECOMPRESSION_FLAG)
                         {
                             if(filename.substr(filename.length()-2, filename.length()) != COMPRESSED_FILE_EXTENSION)
-                            {
-                                std::cout << "Please provide only .c files for decompression!" << std::endl;
-                                exit(EXIT_FAILURE);
-                            }
-                            HuffmanCompression h(filename, Mode::DECOMRESSION);   
+                                throw FileNotCompressedException();
+                                
+                            Huffman h(filename, Mode::DECOMRESSION);   
                         }            
                         else if(flag == COMPRESSION_FLAG)
-                            HuffmanCompression h(filename, Mode::COMPRESSION); 
+                            Huffman h(filename, Mode::COMPRESSION); 
                         else if(flag == ENTROPY_FLAG)
                             Shannon s(filename);
                     }

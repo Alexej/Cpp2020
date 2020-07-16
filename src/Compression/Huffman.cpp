@@ -1,8 +1,8 @@
-#include "../../include/Compression/HuffmanCompression.hpp"
+#include "../../include/Compression/Huffman.hpp"
 
 namespace Cress::Compression 
 {
-    HuffmanCompression::HuffmanCompression(std::string file, Mode mode)
+    Huffman::Huffman(std::string file, Mode mode)
     : queue(), 
       cct(), 
       io(file)
@@ -13,7 +13,7 @@ namespace Cress::Compression
             startDecompressing();
     }
 
-    void HuffmanCompression::
+    void Huffman::
     copyData(void)
     {
         for(std::size_t i = 0; i < io.size(); ++i)
@@ -21,7 +21,7 @@ namespace Cress::Compression
     }
 
     void 
-    HuffmanCompression::fillQueue(void)
+    Huffman::fillQueue(void)
     {
         std::list<int8_t> byteList;
         for(auto byte : data_)
@@ -36,7 +36,7 @@ namespace Cress::Compression
     }
 
     void 
-    HuffmanCompression::createTree(void)
+    Huffman::createTree(void)
     {
         queue.sortByChar();
         while(queue.size() > 1)
@@ -51,14 +51,14 @@ namespace Cress::Compression
     }
 
     void 
-    HuffmanCompression::createTable(void)
+    Huffman::createTable(void)
     {
         traverseTree(rootNode->leftNode(), BitField(0));
         traverseTree(rootNode->rightNode(), BitField(1));
     }
 
     void 
-    HuffmanCompression::traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf)
+    Huffman::traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf)
     {
         if(node->leaf())
         {
@@ -75,7 +75,7 @@ namespace Cress::Compression
     }
   
     void 
-    HuffmanCompression::compress(void)  
+    Huffman::compress(void)  
     {
         BitVector bv;
         for(auto ch : data_)
@@ -87,7 +87,7 @@ namespace Cress::Compression
     }
  
     void  
-    HuffmanCompression::startCompressing(void)
+    Huffman::startCompressing(void)
     {
         copyData();
         fillQueue();
@@ -97,7 +97,7 @@ namespace Cress::Compression
     }
 
     void 
-    HuffmanCompression::startDecompressing(void)
+    Huffman::startDecompressing(void)
     {
         copyData();
         HeaderInfo gho = readHeader();
@@ -107,7 +107,7 @@ namespace Cress::Compression
     }
 
     void 
-    HuffmanCompression::decompress(int32_t gho, int32_t compressedDataLengthInBites) 
+    Huffman::decompress(int32_t gho, int32_t compressedDataLengthInBites) 
     {
         std::vector<int8_t> decompressedCode;
         int32_t globalBitOffset = 0;
@@ -131,7 +131,7 @@ namespace Cress::Compression
     }
 
     int32_t  
-    HuffmanCompression::readInteger(int32_t & offset)
+    Huffman::readInteger(int32_t & offset)
     {
         std::string integerString = "";
         for(std::size_t i = offset; i < data_.size(); ++i)
@@ -145,7 +145,7 @@ namespace Cress::Compression
     }
 
     int32_t 
-    HuffmanCompression::readInteger(int32_t & offset, int32_t & globalHeaderOffset)
+    Huffman::readInteger(int32_t & offset, int32_t & globalHeaderOffset)
     {
         std::string integerString = "";
         int8_t nextChar = data_[offset];
@@ -160,7 +160,7 @@ namespace Cress::Compression
     }
 
     HeaderInfo 
-    HuffmanCompression::readHeader(void)
+    Huffman::readHeader(void)
     {
         int32_t length;
         int32_t offset = 0;

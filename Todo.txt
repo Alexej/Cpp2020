@@ -1,5 +1,3 @@
 1 add code comments // kinda done
-3 add exceptions or at least make sure the program exits correctly    
 2 code style & change naming
 4 add Verbose Build, tells the user what the application currently does(creating Tree, Compressing, Exit, Start, Arguments given etc)
-5 Rename HuffmanCompression to Huffman, cuz this class also decompresses

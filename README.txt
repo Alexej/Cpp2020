@@ -3,7 +3,6 @@ Alexey Prays
 Hochschule Emden/Leer
 2 Semester Informatik
 
-
 Ordnerstruktur:
 
 Cress
@@ -37,7 +36,7 @@ Externe Abhängigkeiten:
 Beschreibung:
    Bei diesem Projekt handelt es sich um meine Implementierung des Huffman Compressions-Algorithmus.
    Es sollte dabei keine voll-funktionsfähige Anwendung erstellt werden, sondern lediglich nur die Grund Funktionalität wie in der
-   ersten Quelle beschrieben implementiert werden(eine Art POC). Bei vorliegender Interesse würde ich das Testen auf kleinere Text-Dateien begrenzen(kleiner als 2 MB, die Maximale Größe 
+   ersten Quelle beschrieben implementiert werden(eine Art POC). Bei vorliegender Interesse würde ich das Testen auf kleinere Text-Dateien begrenzen(kleiner als 15 MB, die Maximale Größe 
    ist sowieso durch die Process-Stack größe begrentzt).
    Ich habe diese Anwendung mit Quelltext-Dateien und Kompilierten C++ Anwendungen getestet. Dabei erhielt ich eine Größenreduktion
    im Bereich von ca. 40-70%. Dieser Algorithmus funktioniert nur bei Dateien mit niedriger Informations-Entropie, falls man versucht Bilder zu Kompressieren
@@ -51,7 +50,6 @@ Topics:
 
    Überblick:
       <grep -rnw -e "TOPIC"> Im Quellverzeichniss ausführen.
-
 
 
 Kompilation:
@@ -86,12 +84,13 @@ Quellen:
    http://web.stanford.edu/class/archive/cs/cs106x/cs106x.1192/resources/minibrowser2/huffman-encoding-supplement.pdf
    https://riptutorial.com/algorithm/example/23995/huffman-coding
 
+   Shannon Entropy
+   http://bearcave.com/misl/misl_tech/wavelets/compression/shannon.html
+
    C++
    https://en.cppreference.com/w/cpp/language/operators
    https://stackoverflow.com/questions/18816126/c-read-the-whole-file-in-buffer
-
-   Shannon Entropy
-   http://bearcave.com/misl/misl_tech/wavelets/compression/shannon.html
+   http://peterforgacs.github.io/2017/06/25/Custom-C-Exceptions-For-Beginners/
 
    Mmap
    https://man7.org/linux/man-pages/man2/mmap.2.html

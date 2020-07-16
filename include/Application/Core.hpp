@@ -1,7 +1,8 @@
 #ifndef H_APPLICATION
 #define H_APPLICATION
 
-#include "../Compression/HuffmanCompression.hpp"
+#include "../Exceptions/FileNotCompressedException.hpp"
+#include "../Compression/Huffman.hpp"
 #include "../Entropy/Shannon.hpp"
 #include <iostream>
 #include <string.h>

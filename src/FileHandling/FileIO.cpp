@@ -15,13 +15,13 @@ namespace Cress::FileHandling
     {
         fileHandle_ = open(filename_.c_str(), O_RDONLY);
         if (fileHandle_ == -1)
-            std::cout << "Error opening file" << std::endl; // throw
+            throw OpenException();
     }
 
     void FileIO::getFileStats(void)
     {
         if (fstat(fileHandle_, &stat_) == -1)
-            std::cout << "Error while obtaining Stats" << std::endl; // throw
+            throw FstatException();
     }
 
 
@@ -29,7 +29,7 @@ namespace Cress::FileHandling
     {
         address_ = mmap(NULL, stat_.st_size, PROT_READ, MAP_PRIVATE, fileHandle_, NULL);
         if (address_ == MAP_FAILED)
-            std::cout << "Error mapping file into memory" << std::endl; // throw
+            throw MmapException();
     } 
 
     std::size_t FileIO::size(void) const
@@ -56,8 +56,7 @@ namespace Cress::FileHandling
     {
         std::ofstream outputStream(filename + COMPRESSED_FILE_EXTENSION, std::ios::out | std::ios::binary);
         if(!outputStream.is_open()) 
-            std::cout << "Error creating file" << std::endl;
-            // throw
+            throw OfstreamException();
         outputStream << bv.bits() << " ";
         outputStream << map.size() << " ";
         for(auto el : map)
@@ -73,8 +72,7 @@ namespace Cress::FileHandling
         std::string newFileName = filename.substr(0,filename.size()-2) + DECOMPRESSED_FILE_EXTENSION;
         std::ofstream outputStream(newFileName, std::ios::out | std::ios::binary);
         if(!outputStream.is_open()) 
-            std::cout << "Error creating file" << std::endl;
-            // throw
+            throw OfstreamException();
         outputStream.write((char*)compressedCode.data(), compressedCode.size());
         outputStream.close();
     }

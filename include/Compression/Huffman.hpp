@@ -1,5 +1,5 @@
-#ifndef H_HUFFMANCOMPRESSION
-#define H_HUFFMANCOMPRESSION
+#ifndef H_Huffman
+#define H_Huffman
 
 #include "../FileHandling/FileIO.hpp"
 #include "../DataStructure/CharacterCodeTable.hpp"
@@ -23,7 +23,7 @@ namespace Cress::Compression
         int32_t compressedDataLengthInBits;
     };
 
-    class HuffmanCompression
+    class Huffman
     {
         public:
             void compress(void);
@@ -35,7 +35,7 @@ namespace Cress::Compression
             void startDecompressing(void);
             void copyData(void);
             HeaderInfo readHeader(void);
-            HuffmanCompression(std::string filePath, Mode mode);
+            Huffman(std::string filePath, Mode mode);
             void traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf);
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
