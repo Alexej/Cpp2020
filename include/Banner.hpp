@@ -1,6 +1,8 @@
 #ifndef H_BANNER
 #define H_BANNER
 
+#include <string>
+
 namespace Cress::Banner
 {
     const std::string banner =  R"(

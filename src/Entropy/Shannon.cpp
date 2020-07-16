@@ -19,13 +19,7 @@ namespace Cress::Entropy
 
     void Shannon::calculateFrequency(void)
     {
-        while(data_.size() > 0)
-        {
-            int8_t currentByte = data_.front();
-            int32_t frequency = std::count(data_.begin(), data_.end(), currentByte);
-            data_.remove(currentByte);
-            charFreqVec_.push_back(std::make_pair(currentByte, frequency));
-        }
+        charFreqVec_ =  Utilities::FrequencyCounter<int8_t, int32_t>(data_);
     }
 
     void Shannon::calculateEntropy(void)

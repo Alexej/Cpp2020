@@ -1,6 +1,7 @@
 #ifndef H_SHANNON
 #define H_SHANNON
 
+#include "../Utilities/FrequencyCounter.hpp"
 #include "../FileHandling/FileIO.hpp"
 #include <unordered_map>
 #include <algorithm>
@@ -23,7 +24,7 @@ namespace Cress::Entropy
             FileHandling::FileIO io_;
             double entropy_ = 0.f;
             std::list<int8_t> data_;
-            std::vector<std::pair<char, int32_t>> charFreqVec_;
+            std::vector<std::pair<int8_t, int32_t>> charFreqVec_;
     };
 }
 

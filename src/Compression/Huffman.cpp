@@ -26,13 +26,10 @@ namespace Cress::Compression
         std::list<int8_t> byteList;
         for(auto byte : data_)
             byteList.push_back(byte);
-        while(byteList.size() > 0)
-        {
-            int8_t currentByte = byteList.front();
-            int32_t frequency = std::count(byteList.begin(), byteList.end(), currentByte);
-            byteList.remove(currentByte);
-            queue_.push(DataStructure::TreeNode(currentByte, frequency));
-        }
+        
+        // Very Bad, did it just so i can use a template function
+        for(auto& el : Utilities::FrequencyCounter<int8_t, int32_t>(byteList))
+            queue_.push(DataStructure::TreeNode(el.first, el.second));
     }
 
     void 
@@ -135,12 +132,11 @@ namespace Cress::Compression
     Huffman::readInteger(int32_t & offset)
     {
         std::string integerString = "";
-        for(std::size_t i = offset; i < data_.size(); ++i)
+        for(std::size_t i = offset; i < data_.size(); ++i, ++offset)
         {
             if(data_[i] == ' ')
                 break;
             integerString += data_[i];
-            ++offset;
         }
         return std::stoi(integerString);
     }
@@ -170,11 +166,9 @@ namespace Cress::Compression
         ++offset;
         length = readInteger(offset);
         int32_t internIndex = offset+1;
-        for(int32_t headerOffset = 0; headerOffset < length; ++headerOffset)
-        {
+        for(int32_t headerOffset = 0; headerOffset < length; ++headerOffset, ++offset)
+        {   int32_t j = internIndex+1;
             int8_t character = data_[internIndex];
-            int32_t j = internIndex+1;
-            ++offset;
             int32_t frequency = readInteger(j, offset);
             queue_.push(DataStructure::TreeNode(character, frequency));
             internIndex+=(j-internIndex);

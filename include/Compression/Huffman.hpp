@@ -1,6 +1,7 @@
 #ifndef H_Huffman
 #define H_Huffman
 
+#include "../Utilities/FrequencyCounter.hpp"
 #include "../DataStructure/HeaderInfo.hpp"
 #include "../Interfaces/ICompression.hpp"
 #include "../FileHandling/FileIO.hpp"
