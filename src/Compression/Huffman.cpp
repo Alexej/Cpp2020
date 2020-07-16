@@ -13,8 +13,8 @@ namespace Cress::Compression
             startDecompressing();
     }
 
-    void Huffman::
-    copyData(void)
+    void 
+    Huffman::copyData(void)
     {
         for(std::size_t i = 0; i < io.size(); ++i)
             data_.push_back(*((char*)io.data() + i));
@@ -100,7 +100,7 @@ namespace Cress::Compression
     Huffman::startDecompressing(void)
     {
         copyData();
-        headerInfo = readHeader();
+        readHeader();
         createTree();
         createTable();
         decompress();
@@ -159,7 +159,7 @@ namespace Cress::Compression
         return std::stoi(integerString);
     }
 
-    HeaderInfo 
+    void 
     Huffman::readHeader(void)
     {
         int32_t length;
@@ -178,6 +178,6 @@ namespace Cress::Compression
             queue.push(HuffmanBinaryTree(character, frequency));
             internIndex+=(j-internIndex);
         }
-        return HeaderInfo(offset+2, cdsib); // remove magic number somehow
+        headerInfo =  HeaderInfo(offset+2, cdsib);
     }
 }

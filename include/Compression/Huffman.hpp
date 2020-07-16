@@ -18,7 +18,6 @@ namespace Cress::Compression
     using namespace Cress::FileHandling;
     using namespace Cress::Interfaces;
     enum class Mode{DECOMRESSION, COMPRESSION};
-
     class Huffman : protected ICompression
     {
         public:
@@ -30,7 +29,7 @@ namespace Cress::Compression
             void startCompressing(void);
             void startDecompressing(void);
             void copyData(void);
-            HeaderInfo readHeader(void);
+            void readHeader(void);
             Huffman(std::string filePath, Mode mode);
             void traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf);
             int32_t readInteger(int32_t & offset);
