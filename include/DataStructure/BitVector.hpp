@@ -8,8 +8,6 @@
 
 namespace Cress::DataStructure
 {
-    using namespace Cress::Macros;
-    using namespace Cress::BitGetters;
     class BitVector
     {
         public:

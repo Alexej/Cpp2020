@@ -17,8 +17,6 @@
 
 namespace Cress::FileHandling
 {
-    using namespace Cress::Exceptions;
-    using namespace Cress::DataStructure;
     class FileIO
     {
         public: 
@@ -30,9 +28,10 @@ namespace Cress::FileHandling
             void * data(void) const;
             std::size_t size(void) const;
             
-            void writeFile(const std::unordered_map<char, std::shared_ptr<CCFEntry>> & map, 
+            void writeFile(const std::unordered_map<char, 
+                           std::shared_ptr<DataStructure::CCFEntry>> & map, 
                            std::string filename, 
-                           const BitVector & bv);
+                           const DataStructure::BitVector & bv);
                            
             void writeFile(std::string filename, 
                            std::vector<int8_t> compressedCode);

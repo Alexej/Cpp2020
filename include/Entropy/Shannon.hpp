@@ -7,10 +7,10 @@
 #include <list>
 #include <utility>
 #include <math.h>
+#include <iostream>
 
 namespace Cress::Entropy
 {
-    using namespace Cress::FileHandling;
     class Shannon
     {
         public:
@@ -20,7 +20,7 @@ namespace Cress::Entropy
             void calculateFrequency(void);
             double logB2(double n);
         private:    
-            FileIO io_;
+            FileHandling::FileIO io_;
             double entropy_ = 0.f;
             std::list<int8_t> data_;
             std::vector<std::pair<char, int32_t>> charFreqVec_;

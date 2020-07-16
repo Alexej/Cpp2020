@@ -15,13 +15,13 @@ namespace Cress::FileHandling
     {
         fileHandle_ = open(filename_.c_str(), O_RDONLY);
         if (fileHandle_ == -1)
-            throw OpenException();
+            throw Exceptions::OpenException();
     }
 
     void FileIO::getFileStats(void)
     {
         if (fstat(fileHandle_, &stat_) == -1)
-            throw FstatException();
+            throw Exceptions::FstatException();
     }
 
 
@@ -29,7 +29,7 @@ namespace Cress::FileHandling
     {
         address_ = mmap(NULL, stat_.st_size, PROT_READ, MAP_PRIVATE, fileHandle_, 0);
         if (address_ == MAP_FAILED)
-            throw MmapException();
+            throw Exceptions::MmapException();
     } 
 
     std::size_t FileIO::size(void) const
@@ -50,13 +50,14 @@ namespace Cress::FileHandling
     }
 
     void 
-    FileIO::writeFile(const std::unordered_map<char, std::shared_ptr<CCFEntry>> & map,
-                           std::string filename, 
-                           const BitVector & bv)
+    FileIO::writeFile(const std::unordered_map<char, 
+                      std::shared_ptr<DataStructure::CCFEntry>> & map,
+                      std::string filename, 
+                      const DataStructure::BitVector & bv)
     {
         std::ofstream outputStream(filename + COMPRESSED_FILE_EXTENSION, std::ios::out | std::ios::binary);
         if(!outputStream.is_open()) 
-            throw OfstreamException();
+            throw Exceptions::OfstreamException();
         outputStream << bv.bits() << " ";
         outputStream << map.size() << " ";
         for(auto el : map)
@@ -72,7 +73,7 @@ namespace Cress::FileHandling
         std::string newFileName = filename.substr(0,filename.size()-2) + DECOMPRESSED_FILE_EXTENSION;
         std::ofstream outputStream(newFileName, std::ios::out | std::ios::binary);
         if(!outputStream.is_open()) 
-            throw OfstreamException();
+            throw Exceptions::OfstreamException();
         outputStream.write((char*)compressedCode.data(), compressedCode.size());
         outputStream.close();
     }

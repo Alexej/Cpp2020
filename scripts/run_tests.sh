@@ -1,8 +1,8 @@
 #!/bin/sh
 
-echo "Building cress..."
+echo "Building huffman..."
 bash build_tests.sh
-./../bin/cress_tests
+./../bin/huffman_tests
 echo "Cleaning up"
 rm ../bin/*
 rm *txt*

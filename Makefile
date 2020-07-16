@@ -18,10 +18,10 @@ TEST_SOURCES += ./tests/tests.cpp
 OBJ = $(SOURCES:.cc=.o)
 TEST_OBJ = $(TEST_SOURCES:.cc=.o)
 
-EXEC = bin/cress
-TEST_EXEC = bin/cress_tests
-VERBOSE_EXEC = bin/cress_verbose
-BENCHAMRK_EXEC = bin/cress_benchmark
+EXEC = bin/huffman
+TEST_EXEC = bin/huffman_tests
+VERBOSE_EXEC = bin/huffman_verbose
+BENCHAMRK_EXEC = bin/huffman_benchmark
 
 all: $(EXEC)
 $(EXEC): $(OBJ)

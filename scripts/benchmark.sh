@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "Building Cress..."
+echo "Building huffman..."
 bash build.sh
 search_dir="../data/"
 red=" tput setaf 1 "
@@ -11,12 +11,12 @@ do
     echo "--------------------------------------------------------------"
     printf "\n"
     echo "$(tput setaf 3)Current File: $entry$(tput sgr 0)"
-    entropy=$(./../bin/cress -e "$entry")
+    entropy=$(./../bin/huffman -e "$entry")
     echo "$entropy"
     echo "$(tput setaf 3)Compressing$(tput sgr 0)"
-    time ./../bin/cress -c $entry
+    time ./../bin/huffman -c $entry
     echo "$(tput setaf 3)Decompressing$(tput sgr 0)"
-    time ./../bin/cress -d "$entry.c"
+    time ./../bin/huffman -d "$entry.c"
     sizeOrig=$(stat -c%s $entry)
     sizeComp=$(stat -c%s "$entry.c")
     sizeDecomp=$(stat -c%s "$entry.d")

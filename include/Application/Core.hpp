@@ -1,6 +1,7 @@
 #ifndef H_APPLICATION
 #define H_APPLICATION
 
+#include "../Banner.hpp"
 #include "../Exceptions/FileNotCompressedException.hpp"
 #include "../Compression/Huffman.hpp"
 #include "../Entropy/Shannon.hpp"
@@ -12,13 +13,11 @@
 
 namespace Cress::Application
 {
-    using namespace Cress::Compression;
-    using namespace Cress::Entropy;
     class Core
     {
         public:
             Core(int argc, char** argv);
-            void showInfo(void) const;
+            void showInfo(std::ostream & out) const;
             void work(void);
         private:
             int32_t argc_;

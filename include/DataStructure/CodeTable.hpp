@@ -2,12 +2,12 @@
 #define H_CODETABLE
 
 #include "CCFEntry.hpp"
-#include <iostream>
 #include <string>
 #include <memory>
 #include <vector>
 #include <unordered_map>
 #include <utility>
+#include <ostream>
 
 namespace Cress::DataStructure
 {

@@ -9,29 +9,28 @@
 
 int main(int argc, char** argv)
 {
-    using namespace Cress::Application;
-    Core core(argc, argv);
-    try
+    Cress::Application::Core core(argc, argv);
+    try 
     {
         core.work();    
     }
-    catch(const FstatException & e)
+    catch(const Cress::Exceptions::FstatException & e)
     {
         std::cout << e.what() << std::endl;
     }
-    catch(const MmapException & e)
+    catch(const Cress::Exceptions::MmapException & e)
     {
         std::cout << e.what() << std::endl;
     }
-    catch(const OfstreamException & e)
+    catch(const Cress::Exceptions::OfstreamException & e)
     {
         std::cout << e.what() << std::endl;
     }
-    catch(const OpenException & e)
+    catch(const Cress::Exceptions::OpenException & e)
     {
         std::cout << e.what() << std::endl;
     }
-    catch(const FileNotCompressedException & e)
+    catch(const Cress::Exceptions::FileNotCompressedException & e)
     {
         std::cout << e.what() << std::endl;
     }

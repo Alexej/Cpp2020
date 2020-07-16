@@ -13,7 +13,7 @@ namespace Cress::DataStructure
         int32_t field = bf.getField();
         for(int32_t i = static_cast<int32_t>(bf.size()-1); i >= 0; --i)
         {
-            setNextBit((field & mask32[i]) >> i);
+            setNextBit((field & BitGetters::mask32[i]) >> i);
         }
     }
 
@@ -28,7 +28,7 @@ namespace Cress::DataStructure
             spaceInCurrentByte = INT8;
         }
         if(bit)
-            bitVector_.back() ^= mask8[spaceInCurrentByte-1];
+            bitVector_.back() ^= BitGetters::mask8[spaceInCurrentByte-1];
         ++currentBitIndex_;
     }
 

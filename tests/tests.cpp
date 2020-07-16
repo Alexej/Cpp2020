@@ -106,9 +106,8 @@ TEST_CASE("Testing BitFields and BitVectors", "[bit manipulation]")
     test.push_back((int8_t)133);
     test.push_back((int8_t)144);
 
-    using namespace Cress::DataStructure;
-    BitField bitFieldArr[9];
-    BitVector bv;
+    Cress::DataStructure::BitField bitFieldArr[9];
+    Cress::DataStructure::BitVector bv;
 
     for(std::size_t i = 0; i < letters.size(); ++i)
     {
@@ -134,9 +133,8 @@ TEST_CASE("Testing BitFields and BitVectors", "[bit manipulation]")
 
 TEST_CASE("Testing BitVector edge case", "[3 bytes]")
 {
-    using namespace Cress::DataStructure;
-    BitField bf1, bf2;
-    BitVector bv;
+    Cress::DataStructure::BitField bf1, bf2;
+    Cress::DataStructure::BitVector bv;
     std::vector<int8_t> test;
 
     test.push_back((int8_t)171);

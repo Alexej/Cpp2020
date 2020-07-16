@@ -14,11 +14,8 @@
 
 namespace Cress::Compression
 {
-    using namespace Cress::DataStructure;
-    using namespace Cress::FileHandling;
-    using namespace Cress::Interfaces;
     enum class Mode{DECOMRESSION, COMPRESSION};
-    class Huffman : protected ICompression
+    class Huffman : protected Interfaces::ICompression
     {
         public:
             void compress(void) override; 
@@ -31,16 +28,17 @@ namespace Cress::Compression
             void copyData(void);
             void readHeader(void);
             Huffman(std::string filePath, Mode mode);
-            void traverseTree(std::shared_ptr<TreeNode> node, BitField bf);
+            void traverseTree(std::shared_ptr<DataStructure::TreeNode> node,
+                              DataStructure::BitField bf);
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
         private:
             std::vector<char> data_;
-            Tree queue_;
-            CodeTable cct_;
-            FileIO io_;
-            std::shared_ptr<TreeNode> rootNode_;
-            HeaderInfo headerInfo_;
+            DataStructure::Tree queue_;
+            DataStructure::CodeTable cct_;
+            FileHandling::FileIO io_;
+            std::shared_ptr<DataStructure::TreeNode> rootNode_;
+            DataStructure::HeaderInfo headerInfo_;
     };
 }
 

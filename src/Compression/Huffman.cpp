@@ -31,7 +31,7 @@ namespace Cress::Compression
             int8_t currentByte = byteList.front();
             int32_t frequency = std::count(byteList.begin(), byteList.end(), currentByte);
             byteList.remove(currentByte);
-            queue_.push(TreeNode(currentByte, frequency));
+            queue_.push(DataStructure::TreeNode(currentByte, frequency));
         }
     }
 
@@ -42,9 +42,9 @@ namespace Cress::Compression
         while(queue_.size() > 1)
         {
             queue_.sortByFrequency();
-            TreeNode hbt1 = queue_.pop();
-            TreeNode hbt2 = queue_.pop(); 
-            TreeNode newNode(hbt1, hbt2);
+            DataStructure::TreeNode hbt1 = queue_.pop();
+            DataStructure::TreeNode hbt2 = queue_.pop(); 
+            DataStructure::TreeNode newNode(hbt1, hbt2);
             queue_.push(newNode);
         }
         rootNode_ = queue_.rootNode();
@@ -53,12 +53,13 @@ namespace Cress::Compression
     void 
     Huffman::createTable(void)
     {
-        traverseTree(rootNode_->leftNode(), BitField(0));
-        traverseTree(rootNode_->rightNode(), BitField(1)); 
+        traverseTree(rootNode_->leftNode(), DataStructure::BitField(0));
+        traverseTree(rootNode_->rightNode(), DataStructure::BitField(1)); 
     }
 
     void 
-    Huffman::traverseTree(std::shared_ptr<TreeNode> node, BitField bf)
+    Huffman::traverseTree(std::shared_ptr<DataStructure::TreeNode> node,
+                          DataStructure::BitField bf)
     {
         if(node->leaf())
         {
@@ -67,8 +68,8 @@ namespace Cress::Compression
         }
         else
         {
-            BitField bfl(bf);
-            BitField bfr(bf);
+            DataStructure::BitField bfl(bf);
+            DataStructure::BitField bfr(bf);
             traverseTree(node->leftNode(), bfl.append(0));
             traverseTree(node->rightNode(), bfr.append(1));
         }
@@ -77,10 +78,10 @@ namespace Cress::Compression
     void 
     Huffman::compress(void)  
     {
-        BitVector bv;
+        DataStructure::BitVector bv;
         for(auto ch : data_)
         {
-            BitField code = cct_.code(ch);
+            DataStructure::BitField code = cct_.code(ch);
             bv.addBits(code);
         } 
         io_.writeFile(cct_.map(), io_.filename(), bv);
@@ -111,7 +112,7 @@ namespace Cress::Compression
     {
         std::vector<int8_t> decompressedCode;
         int32_t globalBitOffset = 0;
-        std::shared_ptr<TreeNode> currentNode = rootNode_;
+        std::shared_ptr<DataStructure::TreeNode> currentNode = rootNode_;
         for(std::size_t i = headerInfo_.globalHeaderOffset_; i < data_.size(); ++i)
         {
             int8_t currentCharacter = data_[i];
@@ -175,9 +176,9 @@ namespace Cress::Compression
             int32_t j = internIndex+1;
             ++offset;
             int32_t frequency = readInteger(j, offset);
-            queue_.push(TreeNode(character, frequency));
+            queue_.push(DataStructure::TreeNode(character, frequency));
             internIndex+=(j-internIndex);
         }
-        headerInfo_ =  HeaderInfo(offset+2, cdsib);
+        headerInfo_ = DataStructure::HeaderInfo(offset+2, cdsib);
     }
 }

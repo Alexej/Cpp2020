@@ -7,27 +7,9 @@ namespace Cress::Application
       argv_(argv)
     {}
 
-    void Core::showInfo(void) const
+    void Core::showInfo(std::ostream & out) const
     {
-        std::cout << std::endl;
-        std::cout << "        ▄████████    ▄████████    ▄████████    ▄████████    ▄████████  " << std::endl;
-        std::cout << "        ███    ███   ███    ███   ███    ███   ███    ███   ███    ███ " << std::endl;
-        std::cout << "        ███    █▀    ███    ███   ███    █▀    ███    █▀    ███    █▀  " << std::endl;
-        std::cout << "        ███         ▄███▄▄▄▄██▀  ▄███▄▄▄       ███          ███        " << std::endl;
-        std::cout << "        ███        ▀▀███▀▀▀▀▀   ▀▀███▀▀▀     ▀███████████ ▀███████████ " << std::endl;
-        std::cout << "        ███    █▄  ▀███████████   ███    █▄           ███          ███ " << std::endl;
-        std::cout << "        ███    ███   ███    ███   ███    ███    ▄█    ███    ▄█    ███ " << std::endl;
-        std::cout << "        ████████▀    ███    ███   ██████████  ▄████████▀   ▄████████▀  " << std::endl;
-        std::cout << "                     ███    ███                                        " << std::endl;
-        std::cout << std::endl;
-        std::cout << std::endl;
-        std::cout << "          Usage:" << std::endl;
-        std::cout << "              ./huffman -c <Filename> : Compress" << std::endl;
-        std::cout << "              ./huffman -d <Filename> : Decompress" << std::endl;
-        std::cout << "              ./huffman -e <Filename> : Entropy" << std::endl;
-        std::cout << "              ./huffman -h            : Info" << std::endl;
-        std::cout << std::endl;
-        std::cout << std::endl;
+        out << Banner::banner << std::endl;
     }
 
     void Core::work(void)
@@ -37,7 +19,7 @@ namespace Cress::Application
             arguments.push_back(std::string(argv_[i]));
 
         if(argc_ < 2 || argc_ > 3)
-            showInfo();
+            showInfo(std::cout);
         else
         {
             std::string flag = "";
@@ -54,29 +36,29 @@ namespace Cress::Application
                 ++position;
             }
             if(flag == "" || counter != 1)
-                showInfo();
+                showInfo(std::cout);
             else
             {
                 if(flag == HELP_FLAG)
-                    showInfo();
+                    showInfo(std::cout);
                 else
                 {
                     if(arguments.size() !=3 )
-                        showInfo();
+                        showInfo(std::cout);
                     else
                     {
                         std::string filename = (position == 1) ? std::string(arguments[2]) : std::string(arguments[1]);
                         if(flag == DECOMPRESSION_FLAG)
                         {
                             if(filename.substr(filename.length()-2, filename.length()) != COMPRESSED_FILE_EXTENSION)
-                                throw FileNotCompressedException();
+                                throw Exceptions::FileNotCompressedException();
                                 
-                            Huffman h(filename, Mode::DECOMRESSION);   
+                            Compression::Huffman h(filename, Compression::Mode::DECOMRESSION);   
                         }            
                         else if(flag == COMPRESSION_FLAG)
-                            Huffman h(filename, Mode::COMPRESSION); 
+                            Compression::Huffman h(filename, Compression::Mode::COMPRESSION); 
                         else if(flag == ENTROPY_FLAG)
-                            Shannon s(filename);
+                            Entropy::Shannon s(filename);
                     }
                 }
             }
