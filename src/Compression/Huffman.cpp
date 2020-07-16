@@ -3,8 +3,8 @@
 namespace Cress::Compression 
 {
     Huffman::Huffman(std::string file, Mode mode)
-    : queue_(), 
-      cct_(), 
+    : tree_(), 
+      ct_(), 
       io_(file)
     {
         if(mode == Mode::COMPRESSION)
@@ -23,28 +23,23 @@ namespace Cress::Compression
     void 
     Huffman::fillQueue(void)
     {
-        std::list<int8_t> byteList;
-        for(auto byte : data_)
-            byteList.push_back(byte);
-        
-        // Very Bad, did it just so i can use a template function
-        for(auto& el : Utilities::FrequencyCounter<int8_t, int32_t>(byteList))
-            queue_.push(DataStructure::TreeNode(el.first, el.second));
+        for(auto el : Utilities::FrequencyCounter<int8_t, int32_t>(data_))
+            tree_.push({el.first, el.second});
     }
 
     void 
     Huffman::createTree(void)
     {
-        queue_.sortByChar();
-        while(queue_.size() > 1)
+        tree_.sortByChar();
+        while(tree_.size() > 1)
         {
-            queue_.sortByFrequency();
-            DataStructure::TreeNode hbt1 = queue_.pop();
-            DataStructure::TreeNode hbt2 = queue_.pop(); 
+            tree_.sortByFrequency();
+            DataStructure::TreeNode hbt1 = tree_.pop();
+            DataStructure::TreeNode hbt2 = tree_.pop(); 
             DataStructure::TreeNode newNode(hbt1, hbt2);
-            queue_.push(newNode);
+            tree_.push(newNode);
         }
-        rootNode_ = queue_.rootNode();
+        rootNode_ = tree_.rootNode();
     }
 
     void 
@@ -61,7 +56,7 @@ namespace Cress::Compression
         if(node->leaf())
         {
             node->data()->setCode(bf);
-            cct_.addEnty(node->data());
+            ct_.addEnty(node->data());
         }
         else
         {
@@ -78,10 +73,10 @@ namespace Cress::Compression
         DataStructure::BitVector bv;
         for(auto ch : data_)
         {
-            DataStructure::BitField code = cct_.code(ch);
+            DataStructure::BitField code = ct_.code(ch);
             bv.addBits(code);
         } 
-        io_.writeFile(cct_.map(), io_.filename(), bv);
+        io_.writeFile(ct_.map(), io_.filename(), bv);
     }
  
     void  
@@ -170,7 +165,7 @@ namespace Cress::Compression
         {   int32_t j = internIndex+1;
             int8_t character = data_[internIndex];
             int32_t frequency = readInteger(j, offset);
-            queue_.push(DataStructure::TreeNode(character, frequency));
+            tree_.push(DataStructure::TreeNode(character, frequency));
             internIndex+=(j-internIndex);
         }
         headerInfo_ = DataStructure::HeaderInfo(offset+2, cdsib);

@@ -2,11 +2,10 @@
 
 namespace Cress::DataStructure
 { 
-    TreeNode::TreeNode(char _character, uint32_t _frequency)
-    {
-        data_ = std::make_shared<CCFEntry>(_character, _frequency);
-        leaf_ = true;
-    }
+    TreeNode::TreeNode(char _character, int32_t _frequency)
+    : data_(std::make_shared<CCFEntry>(_character, _frequency)),
+    leaf_(true)
+    {}
 
     TreeNode::TreeNode(TreeNode _leftNode, TreeNode _rightNode)
     {

@@ -4,7 +4,6 @@
 
 #include "../DataStructure/Tree.hpp"
 #include "../DataStructure/TreeNode.hpp"
-#include <iterator>
 #include <utility>
 #include <list>
 #include <algorithm>
@@ -17,14 +16,14 @@ namespace Cress::Utilities
     typename U  // Frequency
     >          
     std::vector<std::pair<T, U>> 
-    FrequencyCounter(std::list<T> & list)
+    FrequencyCounter(std::vector<T> list)
     {
         std::vector<std::pair<T, U>> ret;
         while(list.size() > 0)
         {
             T currentElement = list.front();
             U frequency = std::count(list.begin(), list.end(), currentElement);
-            list.remove(currentElement);
+            list.erase(std::remove(list.begin(), list.end(), currentElement), list.end());
             ret.push_back({currentElement, frequency});
         }
         return ret;

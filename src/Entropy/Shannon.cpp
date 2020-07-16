@@ -7,25 +7,19 @@ namespace Cress::Entropy
     {
         for(std::size_t i = 0; i < io_.size(); ++i)
             data_.push_back(*((int8_t*)io_.data() + i));
-        calculateFrequency();
         calculateEntropy();
         showEntropy(std::cout);
     }
-    
+     
     double Shannon::logB2(double n)
     {
         return log(n) / log(2);
     }
 
-    void Shannon::calculateFrequency(void)
-    {
-        charFreqVec_ =  Utilities::FrequencyCounter<int8_t, int32_t>(data_);
-    }
-
     void Shannon::calculateEntropy(void)
     {
         int32_t size = io_.size();
-        for(auto character : charFreqVec_)
+        for(auto character : Utilities::FrequencyCounter<int8_t, int32_t>(data_))
         {
             double p = (static_cast<double>(character.second) / static_cast<double>(size));
 #ifdef VERBOSE

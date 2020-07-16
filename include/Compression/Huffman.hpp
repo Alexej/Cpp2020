@@ -34,9 +34,9 @@ namespace Cress::Compression
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
         private:
-            std::vector<char> data_;
-            DataStructure::Tree queue_;
-            DataStructure::CodeTable cct_;
+            std::vector<int8_t> data_;
+            DataStructure::Tree tree_;
+            DataStructure::CodeTable ct_;
             FileHandling::FileIO io_;
             std::shared_ptr<DataStructure::TreeNode> rootNode_;
             DataStructure::HeaderInfo headerInfo_;

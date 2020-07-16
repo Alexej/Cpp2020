@@ -87,9 +87,8 @@ Quellen:
    http://bearcave.com/misl/misl_tech/wavelets/compression/shannon.html
 
    C++
-   https://en.cppreference.com/w/cpp/language/operators
-   https://stackoverflow.com/questions/18816126/c-read-the-whole-file-in-buffer
    http://peterforgacs.github.io/2017/06/25/Custom-C-Exceptions-For-Beginners/
+   https://en.wikibooks.org/wiki/More_C++_Idioms/Erase-Remove
 
    Mmap
    https://man7.org/linux/man-pages/man2/mmap.2.html
