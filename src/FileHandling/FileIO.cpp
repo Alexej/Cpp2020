@@ -70,8 +70,8 @@ namespace Cress::FileHandling
     void 
     FileIO::writeFile(std::string filename, std::vector<int8_t> compressedCode)
     {
-        std::string newFileName = filename.substr(0,filename.size()-2) + DECOMPRESSED_FILE_EXTENSION;
-        std::ofstream outputStream(newFileName, std::ios::out | std::ios::binary);
+        std::ofstream outputStream(filename.substr(0,filename.size()-2) + DECOMPRESSED_FILE_EXTENSION,
+                                   std::ios::out | std::ios::binary);
         if(!outputStream.is_open()) 
             throw Exceptions::OfstreamException();
         outputStream.write((char*)compressedCode.data(), compressedCode.size());

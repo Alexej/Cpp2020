@@ -74,7 +74,7 @@ Bedienung:
    ./cress -c <Filename> : Compress
    ./cress -d <Filename> : Decompress
    ./cress -e <Filename> : Shannon Entropy 
-   ./cress -h            : Banner und Info
+   ./cress -h            : Banner and Info
 
 
 Quellen:

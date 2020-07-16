@@ -23,7 +23,7 @@ namespace Cress::Utilities
         {
             T currentElement = list.front();
             U frequency = std::count(list.begin(), list.end(), currentElement);
-            list.erase(std::remove(list.begin(), list.end(), currentElement), list.end());
+            list.erase(std::remove(list.begin(), list.end(), currentElement), list.end()); // Very slow
             ret.push_back({currentElement, frequency});
         }
         return ret;

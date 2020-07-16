@@ -7,6 +7,8 @@
 #include "../include/Exceptions/OpenException.hpp"
 #include "../include/Exceptions/FileNotCompressedException.hpp"
 
+//https://stackoverflow.com/questions/32257840/properly-terminating-program-using-exceptions
+
 int main(int argc, char** argv)
 {
     Cress::Application::Core core(argc, argv);
@@ -17,22 +19,27 @@ int main(int argc, char** argv)
     catch(const Cress::Exceptions::FstatException & e)
     {
         std::cout << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
     catch(const Cress::Exceptions::MmapException & e)
     {
         std::cout << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
     catch(const Cress::Exceptions::OfstreamException & e)
     {
         std::cout << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
     catch(const Cress::Exceptions::OpenException & e)
     {
         std::cout << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
     catch(const Cress::Exceptions::FileNotCompressedException & e)
     {
         std::cout << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
 }
 

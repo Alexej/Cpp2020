@@ -155,13 +155,12 @@ namespace Cress::Compression
     Huffman::readHeader(void)
     {
         int32_t length;
-        int32_t offset = 0;
         int32_t cdsib;
+        int32_t offset = 0;
         cdsib = readInteger(offset);
         ++offset;
         length = readInteger(offset);
-        int32_t internIndex = offset+1;
-        for(int32_t headerOffset = 0; headerOffset < length; ++headerOffset, ++offset)
+        for(int32_t headerOffset = 0, internIndex = offset+1; headerOffset < length; ++headerOffset, ++offset)
         {   int32_t j = internIndex+1;
             int8_t character = data_[internIndex];
             int32_t frequency = readInteger(j, offset);
