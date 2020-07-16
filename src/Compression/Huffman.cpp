@@ -107,7 +107,7 @@ namespace Cress::Compression
     }
 
     void 
-    Huffman::decompress() 
+    Huffman::decompress(void) 
     {
         std::vector<int8_t> decompressedCode;
         int32_t globalBitOffset = 0;

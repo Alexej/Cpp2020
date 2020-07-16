@@ -22,7 +22,7 @@ namespace Cress::Compression
     {
         public:
             void compress(void) override; 
-            void decompress() override;
+            void decompress(void) override;
             void fillQueue(void);
             void createTree(void);
             void createTable(void);

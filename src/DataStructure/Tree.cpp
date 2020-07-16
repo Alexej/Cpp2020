@@ -37,12 +37,6 @@ namespace Cress::DataStructure
         return tree_.size();
     }
 
-    const TreeNode & 
-    Tree::operator[](int32_t i)
-    {
-        return tree_[i]; 
-    }
-
     std::shared_ptr<TreeNode> 
     Tree::rootNode(void)
     {

@@ -17,8 +17,6 @@ namespace Cress::DataStructure
             void push(TreeNode node);
             TreeNode pop(void); 
             std::shared_ptr<TreeNode> rootNode(void);
-        public:
-            const TreeNode & operator[](int32_t i);
         private:
             std::vector<TreeNode> tree_;
     };

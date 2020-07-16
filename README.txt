@@ -36,8 +36,7 @@ Externe Abhängigkeiten:
 Beschreibung:
    Bei diesem Projekt handelt es sich um meine Implementierung des Huffman Compressions-Algorithmus.
    Es sollte dabei keine voll-funktionsfähige Anwendung erstellt werden, sondern lediglich nur die Grund Funktionalität wie in der
-   ersten Quelle beschrieben implementiert werden(eine Art POC). Bei vorliegender Interesse würde ich das Testen auf kleinere Text-Dateien begrenzen(kleiner als 15 MB, die Maximale Größe 
-   ist sowieso durch die Process-Stack größe begrentzt).
+   ersten Quelle beschrieben implementiert werden(eine Art POC). Bei vorliegender Interesse würde ich das Testen auf kleinere Text-Dateien begrenzen(kleiner als 15 MB).
    Ich habe diese Anwendung mit Quelltext-Dateien und Kompilierten C++ Anwendungen getestet. Dabei erhielt ich eine Größenreduktion
    im Bereich von ca. 40-70%. Dieser Algorithmus funktioniert nur bei Dateien mit niedriger Informations-Entropie, falls man versucht Bilder zu Kompressieren
    kommt es meistens zum Größenzuwachs, das hat wahrscheinlich damit zu tun, dass Bild-Formate wie .png und .jpg selber kompressionen vornehmen
