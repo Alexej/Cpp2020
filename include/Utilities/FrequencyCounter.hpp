@@ -2,10 +2,9 @@
 #define H_FREQUENCYCOUNTER
 
 
-#include "../DataStructure/Tree.hpp"
-#include "../DataStructure/TreeNode.hpp"
 #include <utility>
 #include <list>
+#include <vector>
 #include <algorithm>
 #include <stdint.h>
 

@@ -4,12 +4,12 @@
 #include "../Utilities/FrequencyCounter.hpp"
 #include "../DataStructure/HeaderInfo.hpp"
 #include "../Interfaces/ICompression.hpp"
-#include "../FileHandling/FileIO.hpp"
 #include "../DataStructure/CodeTable.hpp"
+#include "../FileHandling/FileIO.hpp"
 #include "../DataStructure/TreeNode.hpp"
 #include "../DataStructure/BitField.hpp"
 #include "../DataStructure/BitVector.hpp"
-#include "../DataStructure/Tree.hpp"
+#include "../DataStructure/HuffmanTree.hpp"
 #include <list>
 #include <iostream>
 
@@ -19,6 +19,7 @@ namespace Cress::Compression
     class Huffman : protected Interfaces::ICompression
     {
         public:
+            Huffman(std::string filePath, Mode mode);
             void compress(void) override; 
             void decompress(void) override;
             void fillQueue(void);
@@ -28,14 +29,11 @@ namespace Cress::Compression
             void startDecompressing(void);
             void copyData(void);
             void readHeader(void);
-            Huffman(std::string filePath, Mode mode);
-            void traverseTree(std::shared_ptr<DataStructure::TreeNode> node,
-                              DataStructure::BitField bf);
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
         private:
             std::vector<int8_t> data_;
-            DataStructure::Tree tree_;
+            DataStructure::HuffmanTree tree_; 
             DataStructure::CodeTable ct_;
             FileHandling::FileIO io_;
             std::shared_ptr<DataStructure::TreeNode> rootNode_;

@@ -1,26 +1,29 @@
-#ifndef H_TREE
-#define H_TREE
+#ifndef H_HUFFMANTREE
+#define H_HUFFMANTREE
 
 
+#include "CodeTable.hpp"
 #include "TreeNode.hpp"
 #include <algorithm>
 #include <vector>
 
 namespace Cress::DataStructure
 {
-    class Tree
+    class HuffmanTree
     {
         public:
             void sortByChar(void);
-            int32_t size(void) const;
             void sortByFrequency(void);
+            int32_t size(void) const;
             void push(TreeNode node);
             TreeNode pop(void); 
             std::shared_ptr<TreeNode> rootNode(void);
+            void traverseTree(std::shared_ptr<TreeNode> node,
+                              BitField bf, CodeTable & ct);
         private:
             std::vector<TreeNode> tree_;
     };
 } 
 
-#endif // H_TREE
+#endif // H_HUFFMANTREE
 

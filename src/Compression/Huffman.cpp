@@ -45,26 +45,8 @@ namespace Cress::Compression
     void 
     Huffman::createTable(void)
     {
-        traverseTree(rootNode_->leftNode(), DataStructure::BitField(0));
-        traverseTree(rootNode_->rightNode(), DataStructure::BitField(1)); 
-    }
-
-    void 
-    Huffman::traverseTree(std::shared_ptr<DataStructure::TreeNode> node,
-                          DataStructure::BitField bf)
-    {
-        if(node->leaf())
-        {
-            node->data()->setCode(bf);
-            ct_.addEnty(node->data());
-        }
-        else
-        {
-            DataStructure::BitField bfl(bf);
-            DataStructure::BitField bfr(bf);
-            traverseTree(node->leftNode(), bfl.append(0));
-            traverseTree(node->rightNode(), bfr.append(1));
-        }
+        tree_.traverseTree(rootNode_->leftNode(), DataStructure::BitField(0), ct_);
+        tree_.traverseTree(rootNode_->rightNode(), DataStructure::BitField(1), ct_); 
     }
   
     void 
