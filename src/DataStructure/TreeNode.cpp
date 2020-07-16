@@ -3,7 +3,7 @@
 namespace Cress::DataStructure
 { 
     TreeNode::TreeNode(char _character, int32_t _frequency)
-    : data_(std::make_shared<CCFEntry>(_character, _frequency)),
+    : data_(std::make_shared<NodeData>(_character, _frequency)),
     leaf_(true)
     {}
 
@@ -11,7 +11,7 @@ namespace Cress::DataStructure
     {
         leftNode_ = std::make_shared<TreeNode>(_leftNode);
         rightNode_ = std::make_shared<TreeNode>(_rightNode);
-        data_ = std::make_shared<CCFEntry>(leftNode_->data()->frequency() + 
+        data_ = std::make_shared<NodeData>(leftNode_->data()->frequency() + 
                                            rightNode_->data()->frequency());
     } 
 
@@ -27,7 +27,7 @@ namespace Cress::DataStructure
         return rightNode_;
     }  
  
-    std::shared_ptr<CCFEntry> 
+    std::shared_ptr<NodeData> 
     TreeNode::data(void) const
     {
         return data_;

@@ -10,7 +10,7 @@ namespace Cress::DataStructure
         public:
             BitField();
             explicit BitField(bool bit);
-            int32_t getField(void) const;
+            int32_t field(void) const;
             int8_t size(void) const;
             BitField append(bool bit);
         public:

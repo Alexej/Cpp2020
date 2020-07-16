@@ -1,7 +1,7 @@
 #ifndef H_CODETABLE
 #define H_CODETABLE
 
-#include "CCFEntry.hpp"
+#include "NodeData.hpp"
 #include <string>
 #include <memory>
 #include <vector>
@@ -17,10 +17,10 @@ namespace Cress::DataStructure
             BitField code(int8_t character);
             int32_t size() const;
             bool character(BitField code, int8_t & ch);
-            void addEnty(std::shared_ptr<CCFEntry> entry);
-            const std::unordered_map<char, std::shared_ptr<CCFEntry>> & map(void) const;
+            void addEnty(std::shared_ptr<NodeData> entry);
+            const std::unordered_map<char, std::shared_ptr<NodeData>> & map(void) const;
         private:
-            std::unordered_map<char, std::shared_ptr<CCFEntry>> map_;
+            std::unordered_map<char, std::shared_ptr<NodeData>> map_;
     };
 }
 

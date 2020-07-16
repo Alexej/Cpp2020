@@ -10,7 +10,7 @@ namespace Cress::DataStructure
     void 
     BitVector::addBits(BitField bf)
     {
-        int32_t field = bf.getField();
+        int32_t field = bf.field();
         for(int32_t i = static_cast<int32_t>(bf.size()-1); i >= 0; --i)
         {
             setNextBit((field & BitGetters::mask32[i]) >> i);

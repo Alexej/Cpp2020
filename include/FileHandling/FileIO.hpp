@@ -5,7 +5,6 @@
 #include "../Exceptions/MmapException.hpp"
 #include "../Exceptions/OfstreamException.hpp"
 #include "../Exceptions/OpenException.hpp"
-
 #include "../DataStructure/CodeTable.hpp"
 #include "../DataStructure/BitVector.hpp"
 #include <vector>
@@ -29,7 +28,7 @@ namespace Cress::FileHandling
             std::size_t size(void) const;
             
             void writeFile(const std::unordered_map<char, 
-                           std::shared_ptr<DataStructure::CCFEntry>> & map, 
+                           std::shared_ptr<DataStructure::NodeData>> & map, 
                            std::string filename, 
                            const DataStructure::BitVector & bv);
                            

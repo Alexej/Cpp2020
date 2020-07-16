@@ -51,7 +51,7 @@ namespace Cress::FileHandling
 
     void 
     FileIO::writeFile(const std::unordered_map<char, 
-                      std::shared_ptr<DataStructure::CCFEntry>> & map,
+                      std::shared_ptr<DataStructure::NodeData>> & map,
                       std::string filename, 
                       const DataStructure::BitVector & bv)
     {

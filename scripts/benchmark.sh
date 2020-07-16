@@ -1,10 +1,8 @@
 #!/bin/sh
 echo "Building huffman..."
 bash build.sh
+
 search_dir="../data/"
-red=" tput setaf 1 "
-green=" tput setaf 2 "
-reset=" tput sgr0 "
 for entry in "$search_dir"/*
 do
     printf "\n"
@@ -13,8 +11,10 @@ do
     echo "$(tput setaf 3)Current File: $entry$(tput sgr 0)"
     entropy=$(./../bin/huffman -e "$entry")
     echo "$entropy"
+    printf "\n"
     echo "$(tput setaf 3)Compressing$(tput sgr 0)"
     time ./../bin/huffman -c $entry
+    printf "\n"
     echo "$(tput setaf 3)Decompressing$(tput sgr 0)"
     time ./../bin/huffman -d "$entry.c"
     sizeOrig=$(stat -c%s $entry)
@@ -31,12 +31,12 @@ do
         echo "$(tput setaf 1)$diffResult$(tput sgr 0)"
     fi
     echo "Test [filesize]"
-    if [[ $sizeOrig != $sizeDecomp ]]
+    if [ $sizeOrig != $sizeDecomp ]
     then
         echo "$(tput setaf 1)Filesize does not match the original$(tput sgr 0)"
     else
         echo "$sizeOrig == $sizeDecomp"
-        echo "$(tput setaf 2)File decompressed succesfully!$(tput sgr 0)"
+        echo "$(tput setaf 2)Size comparison succesfull!$(tput sgr 0)"
     fi
     printf "\n"
     echo "$(tput setaf 3)Original Size: $sizeOrig$(tput sgr 0)"

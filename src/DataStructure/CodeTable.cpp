@@ -2,7 +2,7 @@
 
 namespace Cress::DataStructure
 {
-    void CodeTable::addEnty(std::shared_ptr<CCFEntry> entry)
+    void CodeTable::addEnty(std::shared_ptr<NodeData> entry)
     {
         map_.insert(std::make_pair(entry->character(), entry));
     }
@@ -32,13 +32,13 @@ namespace Cress::DataStructure
     }
 
     std::ostream & 
-    operator << (std::ostream & os, const CCFEntry & cce)
+    operator << (std::ostream & os, const NodeData & cce)
     {
         os << cce.character_ << cce.frequency_;
         return os; 
     }
 
-    const std::unordered_map<char, std::shared_ptr<CCFEntry>> & 
+    const std::unordered_map<char, std::shared_ptr<NodeData>> & 
     CodeTable::map(void) const
     {
         return map_;

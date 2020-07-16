@@ -1,5 +1,5 @@
-#ifndef H_CHARACTERCODEENTRY
-#define H_CHARACTERCODEENTRY
+#ifndef H_NODEDATA
+#define H_NODEDATA
 
 #include "BitField.hpp"
 #include <stdint.h>
@@ -7,20 +7,19 @@
 
 namespace Cress::DataStructure
 {
-    class CCFEntry // Character, Code, Frequency Entry
+    class NodeData // Character, Code, Frequency Entry
     {
         public:
             int8_t character(void) const;
             int32_t frequency(void) const;
             BitField code(void) const;
             void setCode(BitField code);
-            void setFrequency(int32_t freq);
-            explicit CCFEntry(int32_t _frequency);
-            CCFEntry(int8_t _character, int32_t _frequency);
-            CCFEntry(BitField _code, int8_t _character, int32_t _frequency);
+            explicit NodeData(int32_t _frequency);
+            NodeData(int8_t _character, int32_t _frequency);
+            NodeData(BitField _code, int8_t _character, int32_t _frequency);
         public:
             friend std::ostream& operator << (std::ostream & os, 
-                                              const CCFEntry & dt);            
+                                              const NodeData & dt);            
         private:
             int8_t character_;
             BitField code_;
@@ -28,4 +27,4 @@ namespace Cress::DataStructure
     };
 }
 
-#endif // H_CHARACTERCODEENTRY
+#endif // H_NODEDATA

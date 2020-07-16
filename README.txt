@@ -2,28 +2,33 @@ Huffman-Kodierung
 Alexey Prays 
 Hochschule Emden/Leer
 2 Semester Informatik
+Prof: C. Link
+
 
 Ordnerstruktur:
-
-Cress
-   |
-   ├── bin                       // Dieses Ordner enthält die cress und cress_test binaries.
-   ├── data                      // Dieses Ordner enthält die Test-Dateien.
-   ├── include                   // Dieses Ordner enthält die Header-Dateien.
-   │   ├── Application           
-   │   ├── Compression
-   │   ├── DataStructure
-   │   ├── Entropy
-   │   └── FileHandling
-   ├── libs                      // Dieses Ordner enthält die Cache2 Header-Datei.
-   ├── scripts                   // Dieses Ordner enthält die Skripts.
-   ├── src                       // Dieses Ordner enthält die Quelldateien
-   │   ├── Application
-   │   ├── Compression
-   │   ├── DataStructure
-   │   ├── Entropy
-   │   └── FileHandling
-   └── tests                     // Dieses Ordner enthält Test-Quelldateie.
+   Cress
+      |
+      ├── bin                   // In diesem Ordner befinden sich die huffman und huffman_test binaries.
+      ├── data                  // In diesem Ordner befinden sich die Test-Dateien.
+      ├── include               // In diesem Ordner befinden sich die Header-Dateien.
+      │   ├── Application
+      │   ├── Compression
+      │   ├── DataStructure
+      │   ├── Entropy
+      │   ├── Exceptions
+      │   ├── FileHandling
+      │   ├── Interfaces
+      │   └── Utilities
+      ├── libs                   // In diesem Ordner befindet sich das Catch2-Framework.
+      ├── scripts                // In diesem Ordner befinden sich die Skripts.
+      ├── src                    // In diesem Ordner befinden sich die Quelldateien.
+      │   ├── Application
+      │   ├── Compression
+      │   ├── DataStructure
+      │   ├── Entropy
+      │   ├── Exceptions
+      │   └── FileHandling
+      └── tests                  // In diesem Ordner befindet sich die Tester-Quelldatei.
 
 
 Externe Abhängigkeiten:
@@ -40,7 +45,9 @@ Beschreibung:
    Ich habe diese Anwendung mit Quelltext-Dateien und Kompilierten C++ Anwendungen getestet. Dabei erhielt ich eine Größenreduktion
    im Bereich von ca. 40-70%. Dieser Algorithmus funktioniert nur bei Dateien mit niedriger Informations-Entropie, falls man versucht Bilder zu Kompressieren
    kommt es meistens zum Größenzuwachs, das hat wahrscheinlich damit zu tun, dass Bild-Formate wie .png und .jpg selber kompressionen vornehmen
-   und eine hohe Entropie besitzen, einen Größenzuwachs nach der Kompression stellte ich auch bei Dateiformaten wie .pdf fest.
+   und eine hohe Entropie besitzen, einen Größenzuwachs nach der Kompression stellte ich auch bei Dateiformaten wie .pdf fest. Da ich so ein Projekt zum ersten mal
+   mache und davor keine Ahnung von Kompressionsalgorithmen oder Koplexen Datenstrukturen hatte, konnte ich nicht die Effizienz erreichen die man von so einem Program
+   erwarten würde.
 
 
 Topics:
@@ -78,7 +85,6 @@ Bedienung:
 
 
 Quellen:
-
    Huffman
    http://web.stanford.edu/class/archive/cs/cs106x/cs106x.1192/resources/minibrowser2/huffman-encoding-supplement.pdf
    https://riptutorial.com/algorithm/example/23995/huffman-coding

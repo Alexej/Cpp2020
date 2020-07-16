@@ -20,7 +20,7 @@ namespace Cress::DataStructure
     } 
 
     int32_t 
-    BitField::getField(void) const
+    BitField::field(void) const
     {
         return bitField_;
     }
@@ -33,7 +33,7 @@ namespace Cress::DataStructure
 
     bool operator == (const BitField & rhs, const BitField & lhs)
     {
-        return (rhs.size() == lhs.size()) && (rhs.getField() == lhs.getField());
+        return (rhs.size() == lhs.size()) && (rhs.field() == lhs.field());
     }   
 }
  
