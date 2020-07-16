@@ -3,12 +3,12 @@
 namespace Cress::Compression 
 {
     Huffman::Huffman(std::string file, Mode mode)
-    : queue(), 
-      cct(), 
-      io(file)
+    : queue_(), 
+      cct_(), 
+      io_(file)
     {
         if(mode == Mode::COMPRESSION)
-            startCompressing();
+            startCompressing(); 
         else if(mode == Mode::DECOMRESSION)
             startDecompressing();
     }
@@ -16,8 +16,8 @@ namespace Cress::Compression
     void 
     Huffman::copyData(void)
     {
-        for(std::size_t i = 0; i < io.size(); ++i)
-            data_.push_back(*((char*)io.data() + i));
+        for(std::size_t i = 0; i < io_.size(); ++i)
+            data_.push_back(*((char*)io_.data() + i));
     }
 
     void 
@@ -31,39 +31,39 @@ namespace Cress::Compression
             int8_t currentByte = byteList.front();
             int32_t frequency = std::count(byteList.begin(), byteList.end(), currentByte);
             byteList.remove(currentByte);
-            queue.push(HuffmanBinaryTree(currentByte, frequency));
+            queue_.push(TreeNode(currentByte, frequency));
         }
     }
 
     void 
     Huffman::createTree(void)
     {
-        queue.sortByChar();
-        while(queue.size() > 1)
+        queue_.sortByChar();
+        while(queue_.size() > 1)
         {
-            queue.sortByFrequency();
-            HuffmanBinaryTree hbt1 = queue.pop();
-            HuffmanBinaryTree hbt2 = queue.pop(); 
-            HuffmanBinaryTree newNode(hbt1, hbt2);
-            queue.push(newNode);
+            queue_.sortByFrequency();
+            TreeNode hbt1 = queue_.pop();
+            TreeNode hbt2 = queue_.pop(); 
+            TreeNode newNode(hbt1, hbt2);
+            queue_.push(newNode);
         }
-        rootNode = queue.rootNode();
+        rootNode_ = queue_.rootNode();
     }
 
     void 
     Huffman::createTable(void)
     {
-        traverseTree(rootNode->leftNode(), BitField(0));
-        traverseTree(rootNode->rightNode(), BitField(1));
+        traverseTree(rootNode_->leftNode(), BitField(0));
+        traverseTree(rootNode_->rightNode(), BitField(1)); 
     }
 
     void 
-    Huffman::traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf)
+    Huffman::traverseTree(std::shared_ptr<TreeNode> node, BitField bf)
     {
         if(node->leaf())
         {
             node->data()->setCode(bf);
-            cct.addEnty(node->data());
+            cct_.addEnty(node->data());
         }
         else
         {
@@ -80,10 +80,10 @@ namespace Cress::Compression
         BitVector bv;
         for(auto ch : data_)
         {
-            BitField code = cct.code(ch);
+            BitField code = cct_.code(ch);
             bv.addBits(code);
         } 
-        io.writeFile(cct.map(), io.filename(), bv);
+        io_.writeFile(cct_.map(), io_.filename(), bv);
     }
  
     void  
@@ -111,23 +111,23 @@ namespace Cress::Compression
     {
         std::vector<int8_t> decompressedCode;
         int32_t globalBitOffset = 0;
-        std::shared_ptr<HuffmanBinaryTree> currentNode = rootNode;
-        for(std::size_t i = headerInfo.globalHeaderOffset; i < data_.size(); ++i)
+        std::shared_ptr<TreeNode> currentNode = rootNode_;
+        for(std::size_t i = headerInfo_.globalHeaderOffset_; i < data_.size(); ++i)
         {
             int8_t currentCharacter = data_[i];
             for(int8_t bitCounter = INT8-1; (bitCounter >= 0) && 
-            (globalBitOffset < headerInfo.compressedDataLengthInBits); --bitCounter)
+            (globalBitOffset < headerInfo_.compressedDataLengthInBits_); --bitCounter)
             {
                 ++globalBitOffset;
                 currentNode = currentNode->walkTree(((currentCharacter >> bitCounter) & 1));
                 if(currentNode->leaf())
                 {
                     decompressedCode.push_back(currentNode->data()->character());
-                    currentNode = rootNode;
+                    currentNode = rootNode_;
                 }
             }
         }
-        io.writeFile(io.filename(), decompressedCode);
+        io_.writeFile(io_.filename(), decompressedCode);
     }
 
     int32_t  
@@ -175,9 +175,9 @@ namespace Cress::Compression
             int32_t j = internIndex+1;
             ++offset;
             int32_t frequency = readInteger(j, offset);
-            queue.push(HuffmanBinaryTree(character, frequency));
+            queue_.push(TreeNode(character, frequency));
             internIndex+=(j-internIndex);
         }
-        headerInfo =  HeaderInfo(offset+2, cdsib);
+        headerInfo_ =  HeaderInfo(offset+2, cdsib);
     }
 }

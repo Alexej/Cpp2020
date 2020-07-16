@@ -6,7 +6,7 @@
 #include "../Exceptions/OfstreamException.hpp"
 #include "../Exceptions/OpenException.hpp"
 
-#include "../DataStructure/CharacterCodeTable.hpp"
+#include "../DataStructure/CodeTable.hpp"
 #include "../DataStructure/BitVector.hpp"
 #include <vector>
 #include <fstream>

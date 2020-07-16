@@ -13,22 +13,22 @@ namespace Cress::DataStructure
     BitField  
     BitField::append(bool bit)
     {
-        ++length;
-        bitField <<= 1;
-        bitField ^= bit;
+        ++length_;
+        bitField_ <<= 1;
+        bitField_ ^= bit;
         return *this;
     } 
 
     int32_t 
     BitField::getField(void) const
     {
-        return bitField;
+        return bitField_;
     }
 
     int8_t 
     BitField::size(void) const
     {
-        return length;
+        return length_;
     }
 
     bool operator == (const BitField & rhs, const BitField & lhs)

@@ -10,8 +10,8 @@ namespace Cress::DataStructure
         public:
             HeaderInfo() = default;
             HeaderInfo(int32_t gho, int32_t cdlib);
-            int32_t globalHeaderOffset;
-            int32_t compressedDataLengthInBits;
+            int32_t globalHeaderOffset_;
+            int32_t compressedDataLengthInBits_;
     };
 }
 

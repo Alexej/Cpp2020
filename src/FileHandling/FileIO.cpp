@@ -27,7 +27,7 @@ namespace Cress::FileHandling
 
     void FileIO::mapFile(void)
     {
-        address_ = mmap(NULL, stat_.st_size, PROT_READ, MAP_PRIVATE, fileHandle_, NULL);
+        address_ = mmap(NULL, stat_.st_size, PROT_READ, MAP_PRIVATE, fileHandle_, 0);
         if (address_ == MAP_FAILED)
             throw MmapException();
     } 

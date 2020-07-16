@@ -21,8 +21,8 @@ namespace Cress::DataStructure
             const std::vector<int8_t> & vector(void) const;
             void addBitsInNewByte(int16_t & field, int16_t diff);
         private:
-            std::vector<int8_t> bitVector;
-            int32_t currentBitIndex = 0;
+            std::vector<int8_t> bitVector_;
+            int32_t currentBitIndex_ = 0;
     };
 }
 #endif // H_BITVECTOR

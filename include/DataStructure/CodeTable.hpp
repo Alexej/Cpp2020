@@ -1,5 +1,5 @@
-#ifndef H_CHARACTERCODETABLE
-#define H_CHARACTERCODETABLE
+#ifndef H_CODETABLE
+#define H_CODETABLE
 
 #include "CCFEntry.hpp"
 #include <iostream>
@@ -11,7 +11,7 @@
 
 namespace Cress::DataStructure
 {
-    class CharacterCodeTable
+    class CodeTable
     {
         public:
             BitField code(int8_t character);
@@ -24,4 +24,4 @@ namespace Cress::DataStructure
     };
 }
 
-#endif // H_CHARACTERCODETABLE
+#endif // H_CODETABLE

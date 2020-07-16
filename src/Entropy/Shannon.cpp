@@ -3,13 +3,13 @@
 namespace Cress::Entropy
 {
     Shannon::Shannon(std::string filePath)
-    : io(filePath)
+    : io_(filePath)
     {
-        for(std::size_t i = 0; i < io.size(); ++i)
-            data.push_back(*((int8_t*)io.data() + i));
+        for(std::size_t i = 0; i < io_.size(); ++i)
+            data_.push_back(*((int8_t*)io_.data() + i));
         calculateFrequency();
         calculateEntropy();
-        showEntropy();
+        showEntropy(std::cout);
     }
     
     double Shannon::logB2(double n)
@@ -19,30 +19,31 @@ namespace Cress::Entropy
 
     void Shannon::calculateFrequency(void)
     {
-        while(data.size() > 0)
+        while(data_.size() > 0)
         {
-            int8_t currentByte = data.front();
-            int32_t frequency = std::count(data.begin(), data.end(), currentByte);
-            data.remove(currentByte);
-            charFreqVec.push_back(std::make_pair(currentByte, frequency));
+            int8_t currentByte = data_.front();
+            int32_t frequency = std::count(data_.begin(), data_.end(), currentByte);
+            data_.remove(currentByte);
+            charFreqVec_.push_back(std::make_pair(currentByte, frequency));
         }
     }
 
     void Shannon::calculateEntropy(void)
     {
-        int32_t size = io.size();
-        for(auto character : charFreqVec)
+        int32_t size = io_.size();
+        for(auto character : charFreqVec_)
         {
             double p = (static_cast<double>(character.second) / static_cast<double>(size));
 #ifdef VERBOSE
             std::cout << "char: " << character.first << " Probability: " << p << " Frequency: "<< character.second << "/" << io.size() << std::endl;
 #endif
-            entropy += -(p * logB2(p)); 
+            entropy_ += -(p * logB2(p)); 
         }
     }
 
-    void Shannon::showEntropy(void) const
+    void Shannon::showEntropy(std::ostream & out) const
     {
-        printf("The minimum average number of bits per symbol is: %f\n", entropy);
+        out << "The minimum average number of bits per symbol is: ";
+        out << entropy_ << "\n";
     }
 }

@@ -17,8 +17,8 @@ namespace Cress::DataStructure
             friend bool operator == (const BitField & rhs, 
                                      const BitField & lhs);
         private:
-            int32_t bitField = 0;
-            int8_t length = 0;
+            int32_t bitField_ = 0;
+            int8_t length_ = 0;
     };
 }
 #endif // H_BITFIELD

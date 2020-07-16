@@ -4,7 +4,7 @@ namespace Cress::DataStructure
 {
     BitVector::BitVector(void)
     {
-        bitVector.push_back(0);
+        bitVector_.push_back(0);
     }
 
     void 
@@ -20,33 +20,33 @@ namespace Cress::DataStructure
     void  
     BitVector::setNextBit(bool bit)
     {
-        int32_t cbi = bitVector.size();  
-        int32_t spaceInCurrentByte = (cbi * INT8) - currentBitIndex;
+        int32_t cbi = bitVector_.size();  
+        int32_t spaceInCurrentByte = (cbi * INT8) - currentBitIndex_;
         if(spaceInCurrentByte == 0)
         {
-            bitVector.push_back(0);
+            bitVector_.push_back(0);
             spaceInCurrentByte = INT8;
         }
         if(bit)
-            bitVector.back() ^= mask8[spaceInCurrentByte-1];
-        ++currentBitIndex;
+            bitVector_.back() ^= mask8[spaceInCurrentByte-1];
+        ++currentBitIndex_;
     }
 
     int32_t 
     BitVector::bits(void) const
     {
-        return currentBitIndex;
+        return currentBitIndex_;
     }
 
     int32_t 
     BitVector::size(void) const
     {
-        return bitVector.size();
+        return bitVector_.size();
     }
 
     const std::vector<int8_t> & 
     BitVector::vector(void) const
     {
-        return bitVector;
+        return bitVector_;
     }
 }

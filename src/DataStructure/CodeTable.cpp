@@ -1,20 +1,20 @@
-#include "../../include/DataStructure/CharacterCodeTable.hpp"
+#include "../../include/DataStructure/CodeTable.hpp"
 
 namespace Cress::DataStructure
 {
-    void CharacterCodeTable::addEnty(std::shared_ptr<CCFEntry> entry)
+    void CodeTable::addEnty(std::shared_ptr<CCFEntry> entry)
     {
         map_.insert(std::make_pair(entry->character(), entry));
     }
   
     BitField 
-    CharacterCodeTable::code(int8_t character)
+    CodeTable::code(int8_t character)
     {
         return map_[character]->code();
     }
 
     bool 
-    CharacterCodeTable::character(BitField code, int8_t & ch)
+    CodeTable::character(BitField code, int8_t & ch)
     {
         for(auto entry : map_)
             if(entry.second->code() == code)
@@ -26,7 +26,7 @@ namespace Cress::DataStructure
     }
 
     int32_t 
-    CharacterCodeTable::size() const
+    CodeTable::size() const
     {
         return map_.size();
     }
@@ -39,7 +39,7 @@ namespace Cress::DataStructure
     }
 
     const std::unordered_map<char, std::shared_ptr<CCFEntry>> & 
-    CharacterCodeTable::map(void) const
+    CodeTable::map(void) const
     {
         return map_;
     }

@@ -4,11 +4,11 @@
 #include "../DataStructure/HeaderInfo.hpp"
 #include "../Interfaces/ICompression.hpp"
 #include "../FileHandling/FileIO.hpp"
-#include "../DataStructure/CharacterCodeTable.hpp"
-#include "../DataStructure/HuffmanBinaryTree.hpp"
+#include "../DataStructure/CodeTable.hpp"
+#include "../DataStructure/TreeNode.hpp"
 #include "../DataStructure/BitField.hpp"
 #include "../DataStructure/BitVector.hpp"
-#include "../DataStructure/Queue.hpp"
+#include "../DataStructure/Tree.hpp"
 #include <list>
 #include <iostream>
 
@@ -31,16 +31,16 @@ namespace Cress::Compression
             void copyData(void);
             void readHeader(void);
             Huffman(std::string filePath, Mode mode);
-            void traverseTree(std::shared_ptr<HuffmanBinaryTree> node, BitField bf);
+            void traverseTree(std::shared_ptr<TreeNode> node, BitField bf);
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
         private:
             std::vector<char> data_;
-            Queue queue;
-            CharacterCodeTable cct;
-            FileIO io;
-            std::shared_ptr<HuffmanBinaryTree> rootNode;
-            HeaderInfo headerInfo;
+            Tree queue_;
+            CodeTable cct_;
+            FileIO io_;
+            std::shared_ptr<TreeNode> rootNode_;
+            HeaderInfo headerInfo_;
     };
 }
 

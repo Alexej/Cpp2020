@@ -16,14 +16,14 @@ namespace Cress::Entropy
         public:
             explicit Shannon(std::string filePath);
             void calculateEntropy(void);
-            void showEntropy(void) const;
+            void showEntropy(std::ostream & out) const;
             void calculateFrequency(void);
             double logB2(double n);
         private:    
-            FileIO io;
-            double entropy = 0.f;
-            std::list<int8_t> data;
-            std::vector<std::pair<char, int32_t>> charFreqVec;
+            FileIO io_;
+            double entropy_ = 0.f;
+            std::list<int8_t> data_;
+            std::vector<std::pair<char, int32_t>> charFreqVec_;
     };
 }
 
