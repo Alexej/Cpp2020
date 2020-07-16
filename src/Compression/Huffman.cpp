@@ -100,23 +100,23 @@ namespace Cress::Compression
     Huffman::startDecompressing(void)
     {
         copyData();
-        HeaderInfo gho = readHeader();
+        headerInfo = readHeader();
         createTree();
         createTable();
-        decompress(gho.globalHeaderOffset, gho.compressedDataLengthInBits);
+        decompress();
     }
 
     void 
-    Huffman::decompress(int32_t gho, int32_t compressedDataLengthInBites) 
+    Huffman::decompress() 
     {
         std::vector<int8_t> decompressedCode;
         int32_t globalBitOffset = 0;
         std::shared_ptr<HuffmanBinaryTree> currentNode = rootNode;
-        for(std::size_t i = gho; i < data_.size(); ++i)
+        for(std::size_t i = headerInfo.globalHeaderOffset; i < data_.size(); ++i)
         {
             int8_t currentCharacter = data_[i];
             for(int8_t bitCounter = INT8-1; (bitCounter >= 0) && 
-            (globalBitOffset < compressedDataLengthInBites); --bitCounter)
+            (globalBitOffset < headerInfo.compressedDataLengthInBits); --bitCounter)
             {
                 ++globalBitOffset;
                 currentNode = currentNode->walkTree(((currentCharacter >> bitCounter) & 1));
@@ -180,9 +180,4 @@ namespace Cress::Compression
         }
         return HeaderInfo(offset+2, cdsib); // remove magic number somehow
     }
-
-    HeaderInfo::HeaderInfo(int32_t gho, int32_t cdlib)
-    : globalHeaderOffset(gho),
-      compressedDataLengthInBits(cdlib)
-    {}
 }

@@ -1,6 +1,8 @@
 #ifndef H_Huffman
 #define H_Huffman
 
+#include "../DataStructure/HeaderInfo.hpp"
+#include "../Interfaces/ICompression.hpp"
 #include "../FileHandling/FileIO.hpp"
 #include "../DataStructure/CharacterCodeTable.hpp"
 #include "../DataStructure/HuffmanBinaryTree.hpp"
@@ -14,22 +16,16 @@ namespace Cress::Compression
 {
     using namespace Cress::DataStructure;
     using namespace Cress::FileHandling;
+    using namespace Cress::Interfaces;
     enum class Mode{DECOMRESSION, COMPRESSION};
 
-    struct HeaderInfo
-    {
-        HeaderInfo(int32_t gho, int32_t cdlib);
-        int32_t globalHeaderOffset;
-        int32_t compressedDataLengthInBits;
-    };
-
-    class Huffman
+    class Huffman : protected ICompression
     {
         public:
-            void compress(void);
+            void compress(void) override; 
+            void decompress() override;
             void fillQueue(void);
             void createTree(void);
-            void decompress(int32_t gho, int32_t compressedDataLengthInBits);
             void createTable(void);
             void startCompressing(void);
             void startDecompressing(void);
@@ -45,6 +41,7 @@ namespace Cress::Compression
             CharacterCodeTable cct;
             FileIO io;
             std::shared_ptr<HuffmanBinaryTree> rootNode;
+            HeaderInfo headerInfo;
     };
 }
 
