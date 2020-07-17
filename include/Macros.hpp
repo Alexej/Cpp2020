@@ -1,7 +1,7 @@
 #ifndef H_MACROS
 #define H_MACROS
 
-namespace Cress::Macros
+namespace Cpp2020::Macros
 {
     #define INT8 8
     #define INT16 16

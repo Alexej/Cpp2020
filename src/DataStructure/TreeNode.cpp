@@ -1,10 +1,10 @@
 #include "../../include/DataStructure/TreeNode.hpp"
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 { 
     TreeNode::TreeNode(char _character, int32_t _frequency)
     : data_(std::make_shared<NodeData>(_character, _frequency)),
-    leaf_(true)
+      leaf_(true)
     {}
 
     TreeNode::TreeNode(TreeNode _leftNode, TreeNode _rightNode)

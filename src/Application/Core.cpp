@@ -1,6 +1,6 @@
 #include "../../include/Application/Core.hpp"
 
-namespace Cress::Application
+namespace Cpp2020::Application
 {
     Core::Core(int argc, char** argv)
     : argc_(argc),

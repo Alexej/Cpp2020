@@ -1,6 +1,6 @@
 #include "../../include/DataStructure/CodeTable.hpp"
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     void CodeTable::addEnty(std::shared_ptr<NodeData> entry)
     {
@@ -13,8 +13,8 @@ namespace Cress::DataStructure
         return map_[character]->code();
     }
 
-    bool 
-    CodeTable::character(const BitField & code, int8_t & ch)
+    bool  
+    CodeTable::character(const BitField & code, int8_t & ch) const
     {
         for(auto entry : map_)
             if(entry.second->code() == code)

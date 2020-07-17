@@ -11,32 +11,32 @@
 
 int main(int argc, char** argv)
 {
-    Cress::Application::Core core(argc, argv);
+    Cpp2020::Application::Core core(argc, argv);
     try 
     {
         core.work();    
     }
-    catch(const Cress::Exceptions::FstatException & e)
+    catch(const Cpp2020::Exceptions::FstatException & e)
     {
         std::cout << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-    catch(const Cress::Exceptions::MmapException & e)
+    catch(const Cpp2020::Exceptions::MmapException & e)
     {
         std::cout << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-    catch(const Cress::Exceptions::OfstreamException & e)
+    catch(const Cpp2020::Exceptions::OfstreamException & e)
     {
         std::cout << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-    catch(const Cress::Exceptions::OpenException & e)
+    catch(const Cpp2020::Exceptions::OpenException & e)
     {
         std::cout << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-    catch(const Cress::Exceptions::FileNotCompressedException & e)
+    catch(const Cpp2020::Exceptions::FileNotCompressedException & e)
     {
         std::cout << e.what() << std::endl;
         return EXIT_FAILURE;

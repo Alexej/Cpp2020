@@ -3,7 +3,7 @@
 
 #include <exception>
 
-namespace Cress::Exceptions
+namespace Cpp2020::Exceptions
 {
     class OfstreamException : public std::exception
     {

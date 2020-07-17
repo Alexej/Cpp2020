@@ -1,6 +1,6 @@
 #include "../../include/DataStructure/HuffmanTree.hpp"
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     TreeNode 
     HuffmanTree::pop(void) 
@@ -49,7 +49,7 @@ namespace Cress::DataStructure
     {
         if(node->leaf())
         {
-            node->data()->setCode(bf);
+            node->data()->code(bf);
             ct.addEnty(node->data());
         }
         else

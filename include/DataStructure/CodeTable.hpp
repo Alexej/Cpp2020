@@ -9,14 +9,14 @@
 #include <utility>
 #include <ostream>
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     class CodeTable
     {
-        public:
+        public: 
             BitField code(int8_t character);
             int32_t size(void) const;
-            bool character(const BitField & code, int8_t & ch);
+            bool character(const BitField & code, int8_t & ch) const;
             void addEnty(std::shared_ptr<NodeData> entry);
             const std::unordered_map<char, std::shared_ptr<NodeData>> & map(void) const;
         private:

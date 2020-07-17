@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <stdint.h>
 
-namespace Cress::Utilities
+namespace Cpp2020::Utilities
 {
     template<
     typename T, // Element

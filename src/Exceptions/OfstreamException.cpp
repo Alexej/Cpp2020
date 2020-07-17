@@ -1,6 +1,6 @@
 #include "../../include/Exceptions/OfstreamException.hpp"
 
-namespace Cress::Exceptions
+namespace Cpp2020::Exceptions
 {
     const char * OfstreamException::what () const throw ()
     {

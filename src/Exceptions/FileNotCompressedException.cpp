@@ -1,6 +1,6 @@
 #include "../../include/Exceptions/FileNotCompressedException.hpp"
 
-namespace Cress::Exceptions
+namespace Cpp2020::Exceptions
 {
     const char * FileNotCompressedException::what () const throw ()
     {

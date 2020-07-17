@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <exception>
 
-namespace Cress::Application
+namespace Cpp2020::Application
 {
     class Core
     {

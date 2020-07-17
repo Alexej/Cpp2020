@@ -66,12 +66,12 @@ readDataFromFile(std::string filename, std::vector<char> & vec)
 }
 
 
-TEST_CASE( "Testing Compression and Decompression", "[cress]" ) 
+TEST_CASE( "Testing Compression and Decompression", "[Cpp2020]" ) 
 {
     const std::string filename = "test.txt";
     writeDataToFile(filename);
-    Cress::Compression::Huffman(filename, Cress::Compression::Mode::COMPRESSION);
-    Cress::Compression::Huffman(filename + ".c", Cress::Compression::Mode::DECOMRESSION);
+    Cpp2020::Compression::Huffman(filename, Cpp2020::Compression::Mode::COMPRESSION);
+    Cpp2020::Compression::Huffman(filename + ".c", Cpp2020::Compression::Mode::DECOMRESSION);
 
     std::vector<char> inVec;
     readDataFromFile(filename+ ".d", inVec);
@@ -106,8 +106,8 @@ TEST_CASE("Testing BitFields and BitVectors", "[bit manipulation]")
     test.push_back((int8_t)133);
     test.push_back((int8_t)144);
 
-    Cress::DataStructure::BitField bitFieldArr[9];
-    Cress::DataStructure::BitVector bv;
+    Cpp2020::DataStructure::BitField bitFieldArr[9];
+    Cpp2020::DataStructure::BitVector bv;
 
     for(std::size_t i = 0; i < letters.size(); ++i)
     {
@@ -133,8 +133,8 @@ TEST_CASE("Testing BitFields and BitVectors", "[bit manipulation]")
 
 TEST_CASE("Testing BitVector edge case", "[3 bytes]")
 {
-    Cress::DataStructure::BitField bf1, bf2;
-    Cress::DataStructure::BitVector bv;
+    Cpp2020::DataStructure::BitField bf1, bf2;
+    Cpp2020::DataStructure::BitVector bv;
     std::vector<int8_t> test;
 
     test.push_back((int8_t)171);

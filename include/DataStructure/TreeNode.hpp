@@ -6,7 +6,7 @@
 #include <iostream>
 #include <memory>
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     class TreeNode
     {
@@ -15,8 +15,7 @@ namespace Cress::DataStructure
             std::shared_ptr<TreeNode> rightNode(void) const;            
             std::shared_ptr<NodeData> data(void) const;
             bool leaf(void) const;
-            TreeNode(TreeNode _leftNode, 
-                     TreeNode _rightNode);
+            TreeNode(TreeNode _leftNode, TreeNode _rightNode);
             TreeNode(char _character, int32_t _frequency);
             const std::shared_ptr<TreeNode> walkTree(int8_t rl) const;
         private:

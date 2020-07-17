@@ -1,7 +1,7 @@
 #include "../../include/FileHandling/FileIO.hpp"
 #include <iostream>
 
-namespace Cress::FileHandling
+namespace Cpp2020::FileHandling
 {
     FileIO::FileIO(const std::string & fileName)
     : filename_(fileName)

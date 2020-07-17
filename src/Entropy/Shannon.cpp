@@ -1,6 +1,6 @@
 #include "../../include/Entropy/Shannon.hpp"
 
-namespace Cress::Entropy
+namespace Cpp2020::Entropy
 {
     Shannon::Shannon(const std::string & filePath)
     : io_(filePath)

@@ -13,9 +13,9 @@
 #include <list>
 #include <iostream>
 
-namespace Cress::Compression
+namespace Cpp2020::Compression
 {
-    enum class Mode{DECOMRESSION, COMPRESSION};
+    enum class Mode{DECOMRESSION, COMPRESSION}; 
     class Huffman : protected Interfaces::ICompression
     {
         public:

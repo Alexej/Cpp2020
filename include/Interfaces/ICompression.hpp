@@ -1,7 +1,7 @@
 #ifndef H_ICOMPRESSION
 #define H_ICOMPRESSION
 
-namespace Cress::Interfaces
+namespace Cpp2020::Interfaces
 {
     class ICompression
     {   

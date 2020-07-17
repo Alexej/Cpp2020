@@ -1,6 +1,6 @@
 #include "../../include/DataStructure/BitVector.hpp"
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     BitVector::BitVector(void)
     {
@@ -13,12 +13,12 @@ namespace Cress::DataStructure
         int32_t field = bf.field();
         for(int32_t i = static_cast<int32_t>(bf.size()-1); i >= 0; --i)
         {
-            setNextBit((field & BitGetters::mask32[i]) >> i);
+            nextBit((field & BitGetters::mask32[i]) >> i);
         }
     }
 
     void  
-    BitVector::setNextBit(bool bit)
+    BitVector::nextBit(bool bit)
     {
         int32_t cbi = bitVector_.size();  
         int32_t spaceInCurrentByte = (cbi * INT8) - currentBitIndex_;

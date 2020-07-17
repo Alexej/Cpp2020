@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <vector>
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     class HuffmanTree
     {
@@ -18,8 +18,7 @@ namespace Cress::DataStructure
             void push(TreeNode node);
             TreeNode pop(void); 
             std::shared_ptr<TreeNode> rootNode(void);
-            void traverseTree(const std::shared_ptr<TreeNode> & node,
-                              BitField bf, CodeTable & ct);
+            void traverseTree(const std::shared_ptr<TreeNode> & node, BitField bf, CodeTable & ct);
         private:
             std::vector<TreeNode> tree_;
     };

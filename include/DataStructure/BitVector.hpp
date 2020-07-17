@@ -6,7 +6,7 @@
 #include "BitField.hpp"
 #include <vector>
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     class BitVector
     {
@@ -15,7 +15,7 @@ namespace Cress::DataStructure
             void addBits(const BitField & bf);
             int32_t bits(void) const;
             int32_t size(void) const;
-            void setNextBit(bool bit);
+            void nextBit(bool bit);
             const std::vector<int8_t> & vector(void) const;
             void addBitsInNewByte(int16_t & field, int16_t diff);
         private:

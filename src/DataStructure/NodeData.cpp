@@ -1,6 +1,6 @@
 #include "../../include/DataStructure/NodeData.hpp"
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     NodeData::NodeData(const BitField & _code, int8_t _character, 
                        int32_t _frequency)
@@ -14,6 +14,9 @@ namespace Cress::DataStructure
       frequency_(_frequency)
     {}
 
+   NodeData::NodeData(int32_t _frequency)
+    : frequency_(_frequency)
+    {}
  
     BitField 
     NodeData::code(void) const
@@ -34,12 +37,9 @@ namespace Cress::DataStructure
     }
 
     void 
-    NodeData::setCode(const BitField & code)
+    NodeData::code(const BitField & code)
     {
         code_ = code;
     }
 
-   NodeData::NodeData(int32_t _frequency)
-    : frequency_(_frequency)
-    {}
 }

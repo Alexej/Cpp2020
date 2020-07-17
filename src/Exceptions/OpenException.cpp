@@ -1,6 +1,6 @@
 #include "../../include/Exceptions/OpenException.hpp"
 
-namespace Cress::Exceptions
+namespace Cpp2020::Exceptions
 {
     const char * OpenException::what () const throw ()
     {

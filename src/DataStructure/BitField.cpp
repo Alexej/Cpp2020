@@ -1,6 +1,6 @@
 #include "../../include/DataStructure/BitField.hpp"
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     BitField::BitField()
     {}

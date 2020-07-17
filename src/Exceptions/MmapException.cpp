@@ -1,6 +1,6 @@
 #include "../../include/Exceptions/MmapException.hpp"
 
-namespace Cress::Exceptions
+namespace Cpp2020::Exceptions
 {
     const char * MmapException::what () const throw ()
     {

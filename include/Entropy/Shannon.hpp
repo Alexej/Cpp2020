@@ -7,7 +7,7 @@
 #include <math.h>
 #include <iostream>
 
-namespace Cress::Entropy
+namespace Cpp2020::Entropy
 {
     class Shannon
     {

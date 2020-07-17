@@ -1,6 +1,6 @@
 #include "../../include/Compression/Huffman.hpp"
 
-namespace Cress::Compression 
+namespace Cpp2020::Compression 
 {
     Huffman::Huffman(const std::string & file, Mode mode)
     : tree_(), 

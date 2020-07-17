@@ -1,6 +1,6 @@
 #include "../../include/Exceptions/FstatException.hpp"
 
-namespace Cress::Exceptions
+namespace Cpp2020::Exceptions
 {
     const char * FstatException::what () const throw ()
     {

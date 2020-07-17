@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-namespace Cress::DataStructure
+namespace Cpp2020::DataStructure
 {
     class BitField
     {
@@ -14,8 +14,7 @@ namespace Cress::DataStructure
             int8_t size(void) const;
             BitField append(bool bit);
         public:
-            friend bool operator == (const BitField & rhs, 
-                                     const BitField & lhs);
+            friend bool operator == (const BitField & rhs, const BitField & lhs);
         private:
             int32_t bitField_ = 0;
             int8_t length_ = 0;
