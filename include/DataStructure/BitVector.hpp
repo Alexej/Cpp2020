@@ -12,7 +12,7 @@ namespace Cress::DataStructure
     {
         public:
             BitVector(void);
-            void addBits(BitField bf);
+            void addBits(const BitField & bf);
             int32_t bits(void) const;
             int32_t size(void) const;
             void setNextBit(bool bit);

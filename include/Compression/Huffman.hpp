@@ -19,7 +19,7 @@ namespace Cress::Compression
     class Huffman : protected Interfaces::ICompression
     {
         public:
-            Huffman(std::string filePath, Mode mode);
+            Huffman(const std::string & filePath, Mode mode);
             void compress(void) override; 
             void decompress(void) override;
             void fillQueue(void);

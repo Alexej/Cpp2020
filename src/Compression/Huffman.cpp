@@ -2,7 +2,7 @@
 
 namespace Cress::Compression 
 {
-    Huffman::Huffman(std::string file, Mode mode)
+    Huffman::Huffman(const std::string & file, Mode mode)
     : tree_(), 
       ct_(), 
       io_(file)

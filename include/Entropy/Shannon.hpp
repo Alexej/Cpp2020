@@ -12,7 +12,7 @@ namespace Cress::Entropy
     class Shannon
     {
         public:
-            explicit Shannon(std::string filePath);
+            explicit Shannon(const std::string & filePath);
             void calculateEntropy(void);
             void showEntropy(std::ostream & out) const;
             double logB2(double n);

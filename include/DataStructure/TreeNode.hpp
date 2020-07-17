@@ -18,12 +18,12 @@ namespace Cress::DataStructure
             TreeNode(TreeNode _leftNode, 
                      TreeNode _rightNode);
             TreeNode(char _character, int32_t _frequency);
-            const std::shared_ptr<TreeNode> & walkTree(int8_t rl) const;
+            const std::shared_ptr<TreeNode> walkTree(int8_t rl) const;
         private:
             std::shared_ptr<NodeData> data_ = nullptr;
-            bool leaf_ = false;
             std::shared_ptr<TreeNode> leftNode_;
             std::shared_ptr<TreeNode> rightNode_;
+            bool leaf_ = false;
     };
 }
 

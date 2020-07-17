@@ -14,7 +14,7 @@ namespace Cress::DataStructure
     }
 
     bool 
-    CodeTable::character(BitField code, int8_t & ch)
+    CodeTable::character(const BitField & code, int8_t & ch)
     {
         for(auto entry : map_)
             if(entry.second->code() == code)

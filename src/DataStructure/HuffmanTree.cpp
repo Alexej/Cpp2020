@@ -44,7 +44,7 @@ namespace Cress::DataStructure
         return std::make_shared<TreeNode>(tree_.back());
     }
 
-    void HuffmanTree::traverseTree(std::shared_ptr<TreeNode> node,
+    void HuffmanTree::traverseTree(const std::shared_ptr<TreeNode> & node,
                                    BitField bf, CodeTable & ct)
     {
         if(node->leaf())

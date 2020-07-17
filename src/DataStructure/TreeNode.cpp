@@ -15,19 +15,19 @@ namespace Cress::DataStructure
                                            rightNode_->data()->frequency());
     } 
 
-    std::shared_ptr<TreeNode> 
+    std::shared_ptr<TreeNode>
     TreeNode::leftNode() const
     {
         return leftNode_; 
     }
 
-    std::shared_ptr<TreeNode> 
+    std::shared_ptr<TreeNode>
     TreeNode::rightNode() const
     {
         return rightNode_;
     }  
  
-    std::shared_ptr<NodeData> 
+    std::shared_ptr<NodeData>
     TreeNode::data(void) const
     {
         return data_;
@@ -39,7 +39,7 @@ namespace Cress::DataStructure
         return leaf_;
     }
 
-    const std::shared_ptr<TreeNode> &
+    const std::shared_ptr<TreeNode>
     TreeNode::walkTree(int8_t rl) const
     {
         return rl == 0 ? leftNode_ : rightNode_;

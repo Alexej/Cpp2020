@@ -2,7 +2,8 @@
 
 namespace Cress::DataStructure
 {
-    NodeData::NodeData(BitField _code, int8_t _character, int32_t _frequency)
+    NodeData::NodeData(const BitField & _code, int8_t _character, 
+                       int32_t _frequency)
     : character_(_character),
       code_(_code), 
       frequency_(_frequency)
@@ -33,7 +34,7 @@ namespace Cress::DataStructure
     }
 
     void 
-    NodeData::setCode(BitField code)
+    NodeData::setCode(const BitField & code)
     {
         code_ = code;
     }

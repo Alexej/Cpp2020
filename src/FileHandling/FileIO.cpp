@@ -3,7 +3,7 @@
 
 namespace Cress::FileHandling
 {
-    FileIO::FileIO(std::string fileName)
+    FileIO::FileIO(const std::string & fileName)
     : filename_(fileName)
     {
         openFile();
@@ -52,7 +52,7 @@ namespace Cress::FileHandling
     void 
     FileIO::writeFile(const std::unordered_map<char, 
                       std::shared_ptr<DataStructure::NodeData>> & map,
-                      std::string filename, 
+                      const std::string & filename, 
                       const DataStructure::BitVector & bv)
     {
         std::ofstream outputStream(filename + COMPRESSED_FILE_EXTENSION, std::ios::out | std::ios::binary);
@@ -68,7 +68,8 @@ namespace Cress::FileHandling
     }
 
     void 
-    FileIO::writeFile(std::string filename, std::vector<int8_t> compressedCode)
+    FileIO::writeFile(const std::string & filename, 
+                      const std::vector<int8_t> & compressedCode)
     {
         std::ofstream outputStream(filename.substr(0,filename.size()-2) + DECOMPRESSED_FILE_EXTENSION,
                                    std::ios::out | std::ios::binary);

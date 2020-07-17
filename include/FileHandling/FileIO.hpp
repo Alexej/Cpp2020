@@ -19,7 +19,7 @@ namespace Cress::FileHandling
     class FileIO
     {
         public: 
-            explicit FileIO(std::string fileName);
+            explicit FileIO(const std::string & fileName);
             void openFile(void);
             void mapFile(void);
             void getFileStats(void);
@@ -29,11 +29,11 @@ namespace Cress::FileHandling
             
             void writeFile(const std::unordered_map<char, 
                            std::shared_ptr<DataStructure::NodeData>> & map, 
-                           std::string filename, 
+                           const std::string & filename, 
                            const DataStructure::BitVector & bv);
                            
-            void writeFile(std::string filename, 
-                           std::vector<int8_t> compressedCode);
+            void writeFile(const std::string & filename, 
+                           const std::vector<int8_t> & compressedCode);
 
         private:
             std::string filename_;

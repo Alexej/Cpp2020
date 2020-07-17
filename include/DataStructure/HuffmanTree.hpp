@@ -18,7 +18,7 @@ namespace Cress::DataStructure
             void push(TreeNode node);
             TreeNode pop(void); 
             std::shared_ptr<TreeNode> rootNode(void);
-            void traverseTree(std::shared_ptr<TreeNode> node,
+            void traverseTree(const std::shared_ptr<TreeNode> & node,
                               BitField bf, CodeTable & ct);
         private:
             std::vector<TreeNode> tree_;

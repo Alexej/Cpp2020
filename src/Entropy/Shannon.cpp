@@ -2,7 +2,7 @@
 
 namespace Cress::Entropy
 {
-    Shannon::Shannon(std::string filePath)
+    Shannon::Shannon(const std::string & filePath)
     : io_(filePath)
     {
         for(std::size_t i = 0; i < io_.size(); ++i)
