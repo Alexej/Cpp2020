@@ -4,7 +4,7 @@ Hochschule Emden/Leer
 2 Semester Informatik
 Prof: C. Link
 
-
+<p>
 Ordnerstruktur:
    Cress
       |
@@ -29,7 +29,7 @@ Ordnerstruktur:
       │   ├── Exceptions
       │   └── FileHandling
       └── tests                  // In diesem Ordner befindet sich die Tester-Quelldatei.
-
+</p>
 
 Externe Abhängigkeiten:
    Make
