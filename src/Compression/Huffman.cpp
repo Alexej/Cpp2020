@@ -13,6 +13,7 @@ namespace Cpp2020::Compression
             startDecompressing();
     }
 
+    //[TOPIC](6) Daten: Umwandlung
     void 
     Huffman::copyData(void)
     {
@@ -81,6 +82,8 @@ namespace Cpp2020::Compression
         decompress();
     }
 
+    //[TOPIC](7) Daten: Bitmuster
+    //[TOPIC](8) Daten: Bitoperationen
     void 
     Huffman::decompress(void) 
     {
@@ -133,6 +136,7 @@ namespace Cpp2020::Compression
         return std::stoi(integerString);
     }
 
+    // [TOPIC](5) Daten: Datentypen*
     void 
     Huffman::readHeader(void)
     {

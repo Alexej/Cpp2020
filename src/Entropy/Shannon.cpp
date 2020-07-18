@@ -29,6 +29,7 @@ namespace Cpp2020::Entropy
         }
     }
 
+    //[TOPIC](4) Daten: Darstellung*
     void Shannon::showEntropy(std::ostream & out) const
     {
         out << "The minimum average number of bits per symbol is: ";

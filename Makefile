@@ -25,7 +25,7 @@ BENCHAMRK_EXEC = bin/huffman_benchmark
 
 all: $(EXEC)
 $(EXEC): $(OBJ)
-	$(CXX) -o $@ $(OBJ) $(LBLIBS) 
+	$(CXX) $(LDFLAGS) -o $@ $(OBJ) $(LBLIBS) 
 
 verbose: $(VERBOSE_EXEC)
 $(VERBOSE_EXEC): $(OBJ)

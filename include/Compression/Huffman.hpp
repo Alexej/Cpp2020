@@ -13,13 +13,17 @@
 #include <list>
 #include <iostream>
 
+
+//[TOPIC](11) benutzerdefinierte Datentypen: Abstraktionen: Klasse
 namespace Cpp2020::Compression
 {
     enum class Mode{DECOMRESSION, COMPRESSION}; 
-    class Huffman : protected Interfaces::ICompression
+    //[TOPIC](13) Object Orientation: Inheritance
+    class Huffman : protected Interface::ICompression
     {
         public:
             Huffman(const std::string & filePath, Mode mode);
+            //[TOPIC](19) späte Bindung von Methoden und Funktionen
             void compress(void) override; 
             void decompress(void) override;
             void fillQueue(void);
@@ -29,6 +33,7 @@ namespace Cpp2020::Compression
             void startDecompressing(void);
             void copyData(void);
             void readHeader(void);
+            //[TOPIC](18) frühe Bindung von Methoden und Funktionen
             int32_t readInteger(int32_t & offset);
             int32_t readInteger(int32_t & offset, int32_t & globalHeaderOffset);
         private:

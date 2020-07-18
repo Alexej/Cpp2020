@@ -9,6 +9,11 @@
 
 //https://stackoverflow.com/questions/32257840/properly-terminating-program-using-exceptions
 
+/*
+[TOPIC](25) Best Practices: 0 bis 33
+[TOPIC](26) häufige Fehlerquellen
+*/
+
 int main(int argc, char** argv)
 {
     Cpp2020::Application::Core core(argc, argv);

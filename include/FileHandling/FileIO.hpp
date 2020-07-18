@@ -35,6 +35,7 @@ namespace Cpp2020::FileHandling
             void writeFile(const std::string & filename, 
                            const std::vector<int8_t> & compressedCode);
 
+            ~FileIO(void);
         private:
             std::string filename_;
             int32_t fileHandle_;

@@ -45,9 +45,11 @@ Beschreibung:
    Ich habe diese Anwendung mit Quelltext-Dateien und Kompilierten C++ Anwendungen getestet. Dabei erhielt ich eine Größenreduktion
    im Bereich von ca. 40-70%. Dieser Algorithmus funktioniert nur bei Dateien mit niedriger Informations-Entropie, falls man versucht Bilder zu Kompressieren
    kommt es meistens zum Größenzuwachs, das hat wahrscheinlich damit zu tun, dass Bild-Formate wie .png und .jpg selber kompressionen vornehmen
-   und eine hohe Entropie besitzen, einen Größenzuwachs nach der Kompression stellte ich auch bei Dateiformaten wie .pdf fest. Da ich so ein Projekt zum ersten Mal
+   und eine hohe Entropie besitzen, einen Größenzuwachs nach der Kompression stellte ich auch bei Dateiformaten wie .pdf fest. 
+   
+   Da ich so ein Projekt zum ersten Mal
    mache und davor keine Ahnung von Kompressionsalgorithmen oder Koplexen Datenstrukturen hatte, konnte ich nicht die Effizienz erreichen, die man von so einem Programm
-   erwarten würde. Als Beispiele kann ich die shared_ptr nehmen die ich überall in meiner Baumklasse benutze die im vergleich zu raw pointers eine viel langsamer sind.
+   erwarten würde.
 
 
 Topics:

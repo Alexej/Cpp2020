@@ -14,6 +14,7 @@ namespace Cpp2020::DataStructure
             int8_t size(void) const;
             BitField append(bool bit);
         public:
+            //[TOPIC](12) benutzerdefinierte Datentypen: operator overloading
             friend bool operator == (const BitField & rhs, const BitField & lhs);
         private:
             int32_t bitField_ = 0;

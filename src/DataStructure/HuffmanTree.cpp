@@ -16,6 +16,8 @@ namespace Cpp2020::DataStructure
         tree_.push_back(node);
     }
 
+    //[TOPIC][1](10) Kontrollfluß: fortgeschrittene Kontrollstrukturen: Lambda
+    //[TOPIC](22) wichtige Algorithmen der C++-Standardbibliothek
     void 
     HuffmanTree::sortByFrequency(void) 
     {        
@@ -44,6 +46,7 @@ namespace Cpp2020::DataStructure
         return std::make_shared<TreeNode>(tree_.back());
     }
 
+    //[TOPIC](9) Kontrollfluß: grundlegende Kontrollstrukturen*, Rekursion
     void HuffmanTree::traverseTree(const std::shared_ptr<TreeNode> & node,
                                    BitField bf, CodeTable & ct)
     {

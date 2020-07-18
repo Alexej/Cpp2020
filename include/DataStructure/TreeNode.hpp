@@ -11,6 +11,7 @@ namespace Cpp2020::DataStructure
     class TreeNode
     {
         public:
+            //[TOPIC](28) smart pointers
             std::shared_ptr<TreeNode> leftNode(void) const;
             std::shared_ptr<TreeNode> rightNode(void) const;            
             std::shared_ptr<NodeData> data(void) const;

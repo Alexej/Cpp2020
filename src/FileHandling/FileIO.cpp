@@ -3,6 +3,8 @@
 
 namespace Cpp2020::FileHandling
 {
+    //[TOPIC](17) Object Orientation: Object Lifecycle
+    //[TOPIC][1](24) Idiome: RAII
     FileIO::FileIO(const std::string & fileName)
     : filename_(fileName)
     {
@@ -11,6 +13,7 @@ namespace Cpp2020::FileHandling
         mapFile();
     }
 
+    //[TOPIC][2](10) Kontrollfluß: fortgeschrittene Kontrollstrukturen: Exception
     void FileIO::openFile(void)
     {
         fileHandle_ = open(filename_.c_str(), O_RDONLY);
@@ -58,8 +61,7 @@ namespace Cpp2020::FileHandling
         std::ofstream outputStream(filename + COMPRESSED_FILE_EXTENSION, std::ios::out | std::ios::binary);
         if(!outputStream.is_open()) 
             throw Exceptions::OfstreamException();
-        outputStream << bv.bits() << " ";
-        outputStream << map.size() << " ";
+        outputStream << bv.bits() << " " << map.size() << " ";
         for(auto el : map)
             outputStream << *el.second << " ";
         outputStream << "\n";
@@ -77,5 +79,11 @@ namespace Cpp2020::FileHandling
             throw Exceptions::OfstreamException();
         outputStream.write((char*)compressedCode.data(), compressedCode.size());
         outputStream.close();
+    }
+
+    //[TOPIC][2](24) Idiome: RAII
+    FileIO::~FileIO(void)
+    {
+        munmap(address_, stat_.st_size);
     }
 }
