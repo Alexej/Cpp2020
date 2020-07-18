@@ -4,32 +4,6 @@ Hochschule Emden/Leer
 2 Semester Informatik
 Prof: C. Link
 
-<p>
-Ordnerstruktur:
-   Cress
-      |
-      ├── bin                   // In diesem Ordner befinden sich die huffman und huffman_test binaries.
-      ├── data                  // In diesem Ordner befinden sich die Test-Dateien.
-      ├── include               // In diesem Ordner befinden sich die Header-Dateien.
-      │   ├── Application
-      │   ├── Compression
-      │   ├── DataStructure
-      │   ├── Entropy
-      │   ├── Exceptions
-      │   ├── FileHandling
-      │   ├── Interfaces
-      │   └── Utilities
-      ├── libs                   // In diesem Ordner befindet sich das Catch2-Framework.
-      ├── scripts                // In diesem Ordner befinden sich die Skripts.
-      ├── src                    // In diesem Ordner befinden sich die Quelldateien.
-      │   ├── Application
-      │   ├── Compression
-      │   ├── DataStructure
-      │   ├── Entropy
-      │   ├── Exceptions
-      │   └── FileHandling
-      └── tests                  // In diesem Ordner befindet sich die Tester-Quelldatei.
-</p>
 
 Externe Abhängigkeiten:
    Make
